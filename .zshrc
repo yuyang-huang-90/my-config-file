@@ -1,0 +1,139 @@
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH:.:~/bin:/usr/local/go/bin
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH="$HOME/.rvm/bin:$HOME/Dropbox/tools/script:$PATH" # Add RVM to PATH for scripting
+
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=1000
+SAVEHIST=1000
+
+
+## audocomplete
+autoload -U compinit promptinit
+compinit
+promptinit
+
+## using colors
+autoload colors
+colors
+
+## customize prompt
+PROMPT="[%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m %{$fg_no_bold[blue]%}%1~ %{$reset_color%}]%# "
+RPROMPT="[%{$fg_no_bold[red]%}%?%{$reset_color%}]"
+
+## prevent overwriting when there is no newline
+unsetopt promptcr
+
+# make aliases distinct command
+setopt complete_aliases
+## first subject to parameter expansion
+setopt prompt_subst
+
+## nobeep
+setopt nobeep
+# list jop in long format by default
+setopt long_list_jobs
+# list the type
+setopt list_types
+
+# not autoremove slash
+setopt noautoremoveslash
+
+## auto resume the jop
+setopt auto_resume
+
+# automatically list choice on ambiguous choice
+setopt auto_list
+# list in packed format
+setopt list_packed
+
+## ignore duplicate history
+setopt hist_ignore_dups
+
+## cd auto  push
+setopt autopushd
+
+## do not push same dir
+setopt pushd_ignore_dups
+
+## extend the ~ etc.
+setopt extended_glob
+
+## using tab change manu
+setopt auto_menu
+
+## writng start&end time to histtory
+setopt extended_history
+
+## perform =filename expandshing
+setopt equals
+
+## magic subst
+setopt magic_equal_subst
+
+## when call the history; only reload the line
+setopt hist_verify
+
+# sort in numeric order
+setopt numeric_glob_sort
+
+## auto complete brack
+setopt auto_param_keys
+## share history
+setopt share_history
+
+#print char in eight_bit
+setopt print_eightbit
+## auto add slash to dir
+setopt auto_param_slash
+## enable completion colors
+zstyle ':completion:*:default' menu select=1
+
+## colorizing the completion list
+#eval `dircolors`
+export LSCOLORS=ExFxCxdxBxegedabagacad
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export ZLS_COLORS=$LS_COLORS
+export EDITOR=vim
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# some difference between OS X and Linux
+# for mac only
+if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
+then
+    LS_COLOR='-G'
+    alias mvim='/Applications/MacVim.app/Contents/MacOS/Vim'
+    alias svim='sudo /Applications/MacVim.app/Contents/MacOS/Vim'
+    alias eclimd='/Applications/eclipse/eclimd'
+    alias sage='/Applications/sage/local/bin/sage'
+    export SAGE_ROOT='/Applications/sage'
+    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JDK_HOME=$(/usr/libexec/java_home)
+else
+    # for linux only
+    LS_COLOR='--color'
+    alias mvim='vim'
+    alias eclimd='~/eclipse/eclimd'
+    alias svim='sudo vim'
+    export PATH=$PATH:~/adt-bundle-linux-x86_64-20140702/sdk/platform-tools:~/adt-bundle-linux-x86_64-20140702/sdk/tools
+    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+    export PATH=$PATH:${JAVA_HOME}
+
+fi
+# common alias
+alias ls='ls $LS_COLOR'
+alias ll='ls $LS_COLOR -alF'
+alias la='ls $LS_COLOR -CA'
+alias l='ls $LS_COLOR -CF'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias vp3='source ~/workspace/python3-venv/bin/activate'
+
+
+# some more alias to avoid making mistake
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias c='clear'

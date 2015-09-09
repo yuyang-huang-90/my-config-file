@@ -1,0 +1,10 @@
+[user]
+	name = sigefried
+	email = sigefriedhyy@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
