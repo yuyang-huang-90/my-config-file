@@ -303,20 +303,28 @@ endif
 exec ':so ' . VIMCONFIG_DIR . '/fuf.vim'
 exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
 "gui issue
-if has('gui_running')
-    if has('gui_macvim')
-        set guifont=Menlo:h15
-    else
-        set guifont=Monospace\ 15
-    endif
-    colorscheme vividchalk
-else
-  "  colorscheme xterm16
-    if has('mac')
-        colorscheme vividchalk
-    else
-        colorscheme xterm16
-    endif
-endif
+"if has('gui_running')
+"    if has('gui_macvim')
+"        set guifont=Menlo:h15
+"    else
+"        set guifont=Monospace\ 15
+"    endif
+"    colorscheme vividchalk
+"else
+"  "  colorscheme xterm16
+"    if has('mac')
+"        colorscheme vividchalk
+"    else
+"        colorscheme xterm16
+"    endif
+"endif
 
+" force to use vividchalk 
+colorscheme vividchalk
+set t_Co=256
+
+" cursor under line
+
+set cursorline
+"hi CursorLine term=underline cterm=bold gui=bold
 
