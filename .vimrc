@@ -1,3 +1,4 @@
+"====== BASIC CONFIG========
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -14,9 +15,9 @@ set fencs=utf-8,shift_jis,iso-2022-jp,gbk,euc-jp
 set autoindent
 set cindent
 "tab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set smarttab
 " Show matching brackets.
@@ -42,9 +43,7 @@ set ru
 "syntax
 syntax on
 
-"ctags
-set tag=tags
-set autochdir
+"ctags set tag=tags set autochdir
 
 "word warp
 set tw=79
@@ -87,12 +86,6 @@ autocmd FileType cpp        setl fdm=syntax
 autocmd FileType objc       setl fdm=syntax
 autocmd FileType java       setl fdm=syntax
 autocmd FileType xml        setl fdm=syntax
-" close syntex fold if file is too long
-function! DisableSyntaxFoldForLongFile()
-    if &l:foldmethod == 'syntax' && line('$') > 1000
-        setl fdm=indent
-    endif
-endfunction
 autocmd FileType * call DisableSyntaxFoldForLongFile()
 
 "compile & run
@@ -148,105 +141,112 @@ map <c-h> <c-w>h
 map <c-k> <c-w>k
 map <c-j> <c-w>j
 map <c-l> <c-w>l
-"latex suit
-set grepprg=grep\ -nH\ $*
-set shellslash
-let g:tex_flavor='latex'
-autocmd Filetype tex set iskeyword+=:
-autocmd Filetype tex setlocal makeprg=make
-let g:Tex_AutoFolding=0
-"vundle
-filetype off                   " required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-"
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
 
-" from github repo
-Bundle 'tpope/vim-fugitive'
-"easy motion
-Bundle 'Lokaltog/vim-easymotion'
-"emmet-vim is previous zendcoding.vim
-"xml & html5
-Bundle 'tpope/vim-surround'
-Bundle 'xml.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'othree/html5.vim'
-autocmd Filetype xml,html,eruby imap <C-j> <C-y>j<C-y>j<C-y>n
-" ycm and its support plugin
-Bundle 'Valloric/YouCompleteMe'
-"add dick complete
-autocmd FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
-"nerd tree
-Bundle 'scrooloose/nerdtree'
+"======END OF BASIC CONFIG========
+
+
+
+"====== VIM PLUGINS========
+" requried for vundle but no need for vim-plugin
+"filetype off
+call plug#begin('~/.vim/plugged')
+
+"** EDITOR EXTENTION PLUGIN
+Plug 'Lokaltog/vim-easymotion'
+Plug 'tpope/vim-surround'
+" nerd tree
+Plug 'scrooloose/nerdtree'
+"BufExplForceSyntaxEnable = 1
+"minibufexpl
+Plug 'fholgado/minibufexpl.vim'
+"tagbar
+Plug 'majutsushi/tagbar'
+"CCtree
+Plug 'hari-rangarajan/CCTree'
+" l9 is a Vim-script library,provides some utility functions and commands
+Plug 'L9'
+"fufinder
+Plug 'FuzzyFinder'
+Plug 'ShowTrailingWhitespace'
+" useful line up tools
+Plug 'Tabular'
+Plug 'Yggdroot/indentLine'
+" log viewer C-k to refresh
+Plug 'tailtab.vim'
+"grep
+Plug 'grep.vim'
+"path utility
+Plug 'tpope/vim-pathogen'
+
+" nerd tree setting and key bind
 autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
 cmap NT<CR> NERDTree<CR>
 cmap NTC<CR> NERDTreeClose<CR>
-"minibufexpl
-Bundle 'fholgado/minibufexpl.vim'
+" minibuf setting and key bind
+let g:miniBufExplForceSyntaxEnable = 1
 cmap MBF<CR> :MBEFocus<CR>
 cmap MBC<CR> :MBEClose<CR>
-"tagbar
-Bundle 'majutsushi/tagbar'
+" tagbar setting and key bind
 cmap TB<CR> TagbarToggle<CR>
 cmap TBC<CR> TagbarClose<CR>
-"CCtree
-Bundle 'hari-rangarajan/CCTree'
-"fufinder
-Bundle 'FuzzyFinder'
-"fuf finder map
+" fuf setting and key bind
 cmap ff<CR> FufFile<CR>
 cmap fb<CR> FufBuffer<CR>
 cmap fl<CR> FufLine<CR>
 cmap fd<CR> FufDir<CR>
+" indentLine setting and key bind
+let g:indentLine_leadingSpaceEnabled = 1
 
-"eclim
-"autocmd FileType ruby,java   let g:EclimCompletionMethod='omnifunc'
-" vim-script
-" l9 is a Vim-script library,provides some utility functions and commands
-Bundle 'L9'
 
+"** VERSION CONTROL PLUGIN
+" git warpper
+Plug 'tpope/vim-fugitive'
+
+
+"** WEB DEV PLUGIN
+" Plug 'marijnh/tern_for_vim'
+" Plug 'elzr/vim-json'
+" Plug 'moll/vim-node'
+" Plug 'jQuery'
+" Plug 'xml.vim'
+" Plug 'mattn/emmet-vim'
+" Plug 'pangloss/vim-javascript'
+" Plug 'othree/html5.vim'
+" emmet setting keybind
+" autocmd Filetype xml,html,eruby imap <C-j> <C-y>j<C-y>j<C-y>n
+
+
+"** RUBY & RAILS
+Plug 'vim-ruby/vim-ruby'
+" Plug 'tpope/vim-rails'
+
+
+"** ADDITIONAL SYMTAX
 "octave
-Bundle 'lsdr/octave.vim'
+Plug 'lsdr/octave.vim'
+Plug 'nginx.vim'
+Plug 'Markdown'
+Plug 'haskell.vim'
+" octave setting and config
 au BufRead,BufNewFile *.m,*.oct set ft=octave 
 au BufRead,BufNewFile *.m,*.oct setl omnifunc=syntaxcomplete#Complete
 
-Bundle 'ShowTrailingWhitespace'
-" useful line up tools
-Bundle 'Tabular'
-Bundle 'jQuery'
-Bundle 'nginx.vim'
-Bundle 'Markdown'
-Bundle 'haskell.vim'
-" log viewer C-k to refresh
-Bundle 'tailtab.vim'
-"grep
-Bundle 'grep.vim'
-"vim-latex
-Bundle 'sigefried/vim-latex'
-"js & json
-Bundle 'marijnh/tern_for_vim'
-Bundle 'elzr/vim-json'
-Bundle 'moll/vim-node'
-"ruby & rails
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails.git'
+
+"** YCM AND ITS SUPPORT PLUGIN
+Plug 'Valloric/YouCompleteMe'
+"add dick complete
+autocmd FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"vim template
-Bundle 'aperezdc/vim-template'
-"path utility
-Bundle 'tpope/vim-pathogen'
+"eclim
+"autocmd FileType ruby,java   let g:EclimCompletionMethod='omnifunc'
+
+
+" ** SYNTAX CHECK 
 "syntacstic config
-Bundle 'scrooloose/syntastic'
-" template config
-let g:email                     = 'sigefriedhyy@gmail.com'
-let g:username                  = 'sigefried'
+Plug 'scrooloose/syntastic'
 "syntastic config
 "call pathogen#infect()
 let g:syntastic_python_checkers  = ['pylint']
@@ -255,19 +255,61 @@ let g:syntastic_xml_checkers     = ['xmllint']
 "let g:syntastic_xml_xmllint_args = '--dtdvalid tei_all.dtd'
 "let g:syntastic_cpp_checkers   = []
 "let g:syntastic_c_checkers     = []
-
 let g:syntastic_error_symbol    = 'e'
 let g:syntastic_warning_symbol  = 'w'
 let g:syntastic_mode_map        = { 'mode': 'active'}
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-"Bundle 'file:///Users/gmarik/path/to/plugin'
 
-"ycm_extra_config_file
 
-filetype plugin indent on     " required!
-" some functions
+"** LATEX SUIT
+Plug 'sigefried/vim-latex'
+"latex suit setting and keymap
+set grepprg=grep\ -nH\ $*
+set shellslash
+let g:tex_flavor='latex'
+autocmd Filetype tex set iskeyword+=:
+autocmd Filetype tex setlocal makeprg=make
+let g:Tex_AutoFolding=0
+
+
+"** VIM TEMPLATE
+Plug 'aperezdc/vim-template'
+" template config
+let g:email                     = 'Yuyang@jp.sony.com'
+let g:username                  = 'yuyang'
+
+
+"** DEBUGGER SUPPORT
+" for gdb and lldb support
+" Plug 'gilligan/vim-lldb'
+"Plug 'critiqjo/lldb.nvim'
+" pyclewn
+" Conque GDB
+"Plug 'vim-scripts/Conque-GDB'
+"
+
+" ** GOOGLE CODE FMT SUPPORT
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plug 'google/vim-glaive'
+
+
+" All of your Plugs must be added before the following line
+call plug#end()
+
+" the glaive#Install() should go after the 'call vundle#end()'
+call glaive#Install()
+
+" turn on indentation
+filetype plugin indent on
+
+"====== END OF VIM PLUGIN========
+
+
+"====== USERDEF FUNCTIONS========
 " auto underline
 function! s:Underline(chars)
   let chars = empty(a:chars) ? '-' : a:chars
@@ -294,7 +336,16 @@ function! s:HTMLFormat()
 endfunction
 command! HTMLFormat call s:HTMLFormat()
 
-"extraconfig
+" close syntex fold if file is too long
+function! DisableSyntaxFoldForLongFile()
+    if &l:foldmethod == 'syntax' && line('$') > 1000
+        setl fdm=indent
+    endif
+endfunction
+"====== END OF USERDEF FUNCTION========
+
+
+"====== EXTRA CONFIG========
 let VIMCONFIG_DIR = ''
 if VIMCONFIG_DIR == ''
     let VIMCONFIG_DIR = $HOME."/.vim/conf"
@@ -324,7 +375,9 @@ colorscheme vividchalk
 set t_Co=256
 
 " cursor under line
-
 set cursorline
 "hi CursorLine term=underline cterm=bold gui=bold
+hi Search ctermfg=black ctermbg=yellow
+
+
 
