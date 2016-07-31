@@ -296,6 +296,8 @@ Plug 'google/vim-codefmt'
 " `:help :Glaive` for usage.
 Plug 'google/vim-glaive'
 
+" **GOLANG
+Plug 'fatih/vim-go'
 
 " All of your Plugs must be added before the following line
 call plug#end()

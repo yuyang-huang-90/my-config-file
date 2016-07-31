@@ -78,9 +78,15 @@ git_prompt_string() {
 }
 
 # Set the right-hand prompt
-RPROMPT='$(git_prompt_string)'
-#RPROMPT="[%{$fg_no_bold[red]%}%?%{$reset_color%}]"
 
+RPROMPT='$(git_prompt_string)'
+turn_on_git_rprompt(){
+  RPROMPT='$(git_prompt_string)'
+}
+
+turn_off_git_rprompt(){
+ RPROMPT="[%{$fg_no_bold[red]%}%?%{$reset_color%}]"
+}
 
 ## prevent overwriting when there is no newline
 unsetopt promptcr
@@ -206,4 +212,4 @@ export TERM="xterm-256color"
 #eval "$(tmuxifier init -)"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 
-
+export GOPATH=$HOME/gocode
