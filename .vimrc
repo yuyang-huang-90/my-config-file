@@ -299,6 +299,9 @@ Plug 'google/vim-glaive'
 " **GOLANG
 Plug 'fatih/vim-go'
 
+" **VIM WIKI
+Plug 'vimwiki/vimwiki'
+
 " All of your Plugs must be added before the following line
 call plug#end()
 
