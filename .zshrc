@@ -28,66 +28,6 @@ PROMPT="[%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m %{$fg_no_bold[magenta]
 # modified right side prompt to shwo git information
 #RPROMPT="[%{$fg_no_bold[red]%}%?%{$reset_color%}]"
 
-# Modify the colors and symbols in these variables as desired.
-GIT_PROMPT_SYMBOL="%{$fg[cyan]%}git"
-GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
-GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
-GIT_PROMPT_MERGING="%{$fg[magenta]%}⚡︎%{$reset_color%}"
-GIT_PROMPT_UNTRACKED="%{$fg[red]%}u%{$reset_color%}"
-GIT_PROMPT_MODIFIED="%{$fg[yellow]%}m%{$reset_color%}"
-GIT_PROMPT_STAGED="%{$fg[green]%}s%{$reset_color%}"
-
-# Show Git branch/tag, or name-rev if on detached head
-parse_git_branch() {
-  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
-}
-
-# Show different symbols as appropriate for various Git repository states
-parse_git_state() {
-
-  # Compose this value via multiple conditional appends.
-  local GIT_STATE=""
-
-  local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
-  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
-  fi
-
-  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
-  fi
-
-  if ! git diff --quiet 2> /dev/null; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
-  fi
-
-  if ! git diff --cached --quiet 2> /dev/null; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
-  fi
-
-  if [[ -n $GIT_STATE ]]; then
-    echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"
-  fi
-
-}
-
-# If inside a Git repository, print its branch and state
-git_prompt_string() {
-  local git_where="$(parse_git_branch)"
-  [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
-}
-
-# Set the right-hand prompt
-
-RPROMPT='$(git_prompt_string)'
-turn_on_git_rprompt(){
-  RPROMPT='$(git_prompt_string)'
-}
-
-turn_off_git_rprompt(){
- RPROMPT="[%{$fg_no_bold[red]%}%?%{$reset_color%}]"
-}
-
 ## prevent overwriting when there is no newline
 unsetopt promptcr
 
@@ -149,6 +89,9 @@ setopt auto_param_keys
 ## share history
 setopt share_history
 
+# auto cd
+cdpath=(~/workspace/mit-os)
+
 #print char in eight_bit
 setopt print_eightbit
 ## auto add slash to dir
@@ -163,6 +106,26 @@ export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30
 export ZLS_COLORS=$LS_COLORS
 export EDITOR=vim
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# setup rprompt with git
+#
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes false
+turn_on_git_stage_check() {
+  zstyle ':vcs_info:*' check-for-changes true
+}
+#zstyle ':vcs_info:*' stagedstr '!'
+#zstyle ':vcs_info:*' unstagedstr '?'
+zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}(%{$fg[green]%}%c%{$reset_color%}%{$fg[red]%}%u%{$reset_color%})"
+#zstyle ':vcs_info:git*' formats "%{$fg[green]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "
+#zstyle ':vcs_info:git*' formats "%s  %r/%S %b %m%u%c "
+
+RPROMPT=\$vcs_info_msg_0_
+
 
 # some difference between OS X and Linux
 # for mac only

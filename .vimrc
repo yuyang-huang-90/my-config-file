@@ -224,13 +224,14 @@ Plug 'vim-ruby/vim-ruby'
 "** ADDITIONAL SYMTAX
 "octave
 Plug 'lsdr/octave.vim'
-Plug 'nginx.vim'
-Plug 'Markdown'
-Plug 'haskell.vim'
 " octave setting and config
 au BufRead,BufNewFile *.m,*.oct set ft=octave 
 au BufRead,BufNewFile *.m,*.oct setl omnifunc=syntaxcomplete#Complete
 
+" ** SYNTAX HIGHLIGHT
+Plug 'nginx.vim'
+Plug 'haskell.vim'
+Plug 'plasticboy/vim-markdown'
 
 "** YCM AND ITS SUPPORT PLUGIN
 Plug 'Valloric/YouCompleteMe'

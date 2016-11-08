@@ -38,19 +38,19 @@ base="$(pwd)"
 
 echo "link dot file..."
 
-ln -sfn $base/.zshrc ${TARGET_DIR}/
-ln -sfn $base/.vimrc ${TARGET_DIR}/
-ln -sfn $base/.emacs ${TARGET_DIR}/
-ln -sfn $base/.hgrc ${TARGET_DIR}/
-ln -sfn $base/.bashrc ${TARGET_DIR}/
-ln -sfn $base/.gitconfig ${TARGET_DIR}/
-ln -sfn $base/.tmux.conf ${TARGET_DIR}/
+ln -sfnh $base/.zshrc ${TARGET_DIR}/
+ln -sfnh $base/.vimrc ${TARGET_DIR}/
+ln -sfnh $base/.emacs ${TARGET_DIR}/
+ln -sfnh $base/.hgrc ${TARGET_DIR}/
+ln -sfnh $base/.bashrc ${TARGET_DIR}/
+ln -sfnh $base/.gitconfig ${TARGET_DIR}/
+ln -sfnh $base/.tmux.conf ${TARGET_DIR}/
 
 echo "link dir..."
 
-ln -sfn $base/conf ${TARGET_DIR}/.vim/
-ln -sfn $base/dict  ${TARGET_DIR}/.vim/
-ln -sfn $base/colors   ${TARGET_DIR}/.vim/
+ln -sfnh $base/conf ${TARGET_DIR}/.vim/
+ln -sfnh $base/dict  ${TARGET_DIR}/.vim/
+ln -sfnh $base/colors   ${TARGET_DIR}/.vim/
 
 echo "setup vim plug bundle"
 
@@ -59,8 +59,8 @@ curl -fLo ${TARGET_DIR}/.vim/autoload/plug.vim --create-dirs \
 
 echo "setup neovim config"
 
-ln -sfn ${TARGET_DIR}/.vim ${TARGET_DIR}/.config/nvim
-ln -sfn ${TARGET_DIR}/.vimrc ${TARGET_DIR}/.vim/init.vim
+ln -sfnh ${TARGET_DIR}/.vim ${TARGET_DIR}/.config/nvim
+ln -sfnh ${TARGET_DIR}/.vimrc ${TARGET_DIR}/.vim/init.vim
 
 
 echo "done!"
