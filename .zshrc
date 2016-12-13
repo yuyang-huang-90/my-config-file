@@ -4,6 +4,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:$PATH:.:~/bin:/usr/local/go/bin
 export PATH=/usr/local/opt/ruby/bin:$PATH
 export PATH="$HOME/.rvm/bin:$HOME/Dropbox/tools/script:$PATH" # Add RVM to PATH for scripting
 export PATH="$HOME/.tmuxifier/bin:$PATH"
+export PATH="~/bin:$PATH"
 
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=1000
@@ -150,6 +151,26 @@ else
     export PATH=$PATH:${JAVA_HOME}
 
 fi
+
+#for peco snip
+# Search shell history with peco: https://github.com/peco/peco
+# Adapted from: https://github.com/mooz/percol#zsh-history-search
+if which peco &> /dev/null; then
+  function peco_select_history() {
+    local tac
+    { which gtac &> /dev/null && tac="gtac" } || \
+      { which tac &> /dev/null && tac="tac" } || \
+      tac="tail -r"
+    BUFFER=$(fc -l -n 1 | eval $tac | \
+                peco --layout=top-down --query "$LBUFFER")
+    CURSOR=$#BUFFER # move cursor
+    zle -R -c       # refresh
+  }
+
+  zle -N peco_select_history
+  bindkey '^R' peco_select_history
+fi
+
 # common alias
 alias ls='ls $LS_COLOR'
 alias ll='ls $LS_COLOR -alF'
