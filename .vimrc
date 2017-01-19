@@ -18,7 +18,7 @@ set cindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
+"set expandtab
 set smarttab
 " Show matching brackets.
 set showmatch
@@ -247,7 +247,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " ** SYNTAX CHECK 
 "syntacstic config
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 "syntastic config
 "call pathogen#infect()
 let g:syntastic_python_checkers  = ['pylint']

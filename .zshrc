@@ -171,6 +171,10 @@ if which peco &> /dev/null; then
   bindkey '^R' peco_select_history
 fi
 
+#git related config
+turn_on_git_stage_check
+source ~/zsh-plugin/git.plugin.zsh
+
 # common alias
 alias ls='ls $LS_COLOR'
 alias ll='ls $LS_COLOR -alF'
@@ -197,3 +201,4 @@ export TERM="xterm-256color"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 
 export GOPATH=$HOME/gocode
+
