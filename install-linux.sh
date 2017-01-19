@@ -52,6 +52,9 @@ ln -sfn $base/conf ${TARGET_DIR}/.vim/
 ln -sfn $base/dict  ${TARGET_DIR}/.vim/
 ln -sfn $base/colors   ${TARGET_DIR}/.vim/
 
+
+ln -sfn $base/zsh-plugin   ${TARGET_DIR}/
+
 echo "setup vim plug bundle"
 
 curl -fLo ${TARGET_DIR}/.vim/autoload/plug.vim --create-dirs \
