@@ -40,8 +40,13 @@ set nobackup
 set number
 "ruler
 set ru
+"status line
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+"tab completion
+set wildmode=list:full
 "syntax
 syntax on
+
 
 "ctags set tag=tags set autochdir
 
@@ -302,6 +307,9 @@ Plug 'fatih/vim-go'
 
 " **VIM WIKI
 Plug 'vimwiki/vimwiki'
+
+" **VIM DRAW
+Plug 'vim-scripts/DrawIt'
 
 " All of your Plugs must be added before the following line
 call plug#end()
