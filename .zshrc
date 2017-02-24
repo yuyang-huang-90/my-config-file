@@ -160,7 +160,7 @@ if which peco &> /dev/null; then
       { which tac &> /dev/null && tac="tac" } || \
       tac="tail -r"
     BUFFER=$(fc -l -n 1 | eval $tac | \
-                peco --layout=top-down --query "$LBUFFER")
+                peco --query "$LBUFFER")
     CURSOR=$#BUFFER # move cursor
     zle -R -c       # refresh
   }
@@ -204,6 +204,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias c='clear'
 
+# nvim alias
+alias nvimf='nvim $(fzf)'
 
 # set TERM xterm256
 export TERM="xterm-256color"
