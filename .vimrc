@@ -171,7 +171,7 @@ Plug 'hari-rangarajan/CCTree'
 " l9 is a Vim-script library,provides some utility functions and commands
 Plug 'L9'
 "fufinder
-Plug 'FuzzyFinder'
+"Plug 'FuzzyFinder'
 Plug 'ShowTrailingWhitespace'
 " useful line up tools
 Plug 'Tabular'
@@ -195,13 +195,16 @@ cmap MBC<CR> :MBEClose<CR>
 cmap TB<CR> TagbarToggle<CR>
 cmap TBC<CR> TagbarClose<CR>
 " fuf setting and key bind
-cmap ff<CR> FufFile<CR>
-cmap fb<CR> FufBuffer<CR>
-cmap fl<CR> FufLine<CR>
-cmap fd<CR> FufDir<CR>
+"cmap ff<CR> FufFile<CR>
+"cmap fb<CR> FufBuffer<CR>
+"cmap fl<CR> FufLine<CR>
+"cmap fd<CR> FufDir<CR>
 " indentLine setting and key bind
 let g:indentLine_leadingSpaceEnabled = 1
 
+" fzf plugin
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+cmap  fzf<CR> FZF<CR>
 
 "** VERSION CONTROL PLUGIN
 " git warpper
@@ -356,6 +359,15 @@ function! DisableSyntaxFoldForLongFile()
         setl fdm=indent
     endif
 endfunction
+
+" peco open
+function! PecoOpen()
+  for filename in split(system("find . -type f | peco"), "\n")
+    execute "e" filename
+  endfor
+endfunction
+cmap pe<CR> call PecoOpen()<CR>
+
 "====== END OF USERDEF FUNCTION========
 
 
@@ -365,7 +377,7 @@ if VIMCONFIG_DIR == ''
     let VIMCONFIG_DIR = $HOME."/.vim/conf"
 endif
 
-exec ':so ' . VIMCONFIG_DIR . '/fuf.vim'
+"exec ':so ' . VIMCONFIG_DIR . '/fuf.vim'
 exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
 "gui issue
 "if has('gui_running')

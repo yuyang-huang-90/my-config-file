@@ -90,8 +90,6 @@ setopt auto_param_keys
 ## share history
 setopt share_history
 
-# auto cd
-cdpath=(~/workspace/mit-os)
 
 #print char in eight_bit
 setopt print_eightbit
@@ -171,6 +169,20 @@ if which peco &> /dev/null; then
   bindkey '^R' peco_select_history
 fi
 
+# fzf
+if [ -f ~/.fzf.zsh ]
+then
+	source ~/.fzf.zsh
+	alias fzf='fzf --reverse'
+fi
+
+# enhanced cd
+if [ -f ~/bin/enhancd/init.sh ]
+then
+	export ENHANCD_COMMAND=ecd
+	source ~/bin/enhancd/init.sh
+fi
+
 #git related config
 turn_on_git_stage_check
 source ~/zsh-plugin/git.plugin.zsh
@@ -201,4 +213,5 @@ export TERM="xterm-256color"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 
 export GOPATH=$HOME/gocode
+
 
