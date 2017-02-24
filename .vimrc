@@ -43,7 +43,7 @@ set ru
 "status line
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 "tab completion
-set wildmode=list:full
+"set wildmode=list:full
 "syntax
 syntax on
 
@@ -187,10 +187,13 @@ Plug 'tpope/vim-pathogen'
 autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
 cmap NT<CR> NERDTree<CR>
 cmap NTC<CR> NERDTreeClose<CR>
-" minibuf setting and key bind
+" minibuf setting and buffer move key bind
 let g:miniBufExplForceSyntaxEnable = 1
-cmap MBF<CR> :MBEFocus<CR>
-cmap MBC<CR> :MBEClose<CR>
+cmap MBF<CR> MBEFocus<CR>
+nmap <Leader>f :MBEFocus<CR>
+nmap mp :bp<CR>
+nmap mn :bn<CR>
+cmap MBC<CR> MBEClose<CR>
 " tagbar setting and key bind
 cmap TB<CR> TagbarToggle<CR>
 cmap TBC<CR> TagbarClose<CR>
