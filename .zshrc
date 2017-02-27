@@ -173,7 +173,9 @@ fi
 if [ -f ~/.fzf.zsh ]
 then
 	source ~/.fzf.zsh
-	alias fzf='fzf --reverse'
+	export FZF_DEFAULT_OPTS="--reverse --height 40% \
+		--color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229\
+		--color info:150,prompt:110,spinner:150,pointer:167,marker:174"
 fi
 
 # enhanced cd

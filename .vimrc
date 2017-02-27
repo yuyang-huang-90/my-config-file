@@ -208,7 +208,7 @@ let g:indentLine_leadingSpaceEnabled = 1
 " fzf plugin
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
-cmap  fzf<CR> FZF<CR>
+"cmap  fzf<CR> FZF<CR>
 
 "** VERSION CONTROL PLUGIN
 " git warpper
