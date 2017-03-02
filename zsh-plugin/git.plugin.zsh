@@ -75,7 +75,7 @@ alias gpristine='git reset --hard && git clean -dfx'
 alias gcm='git checkout master'
 alias gcd='git checkout develop'
 alias gcmsg='git commit -m'
-alias gco='git checkout $(git branch | peco)'
+alias gco='git checkout $(git branch | fzf)'
 alias gcount='git shortlog -sn'
 compdef _git gcount
 alias gcp='git cherry-pick'
