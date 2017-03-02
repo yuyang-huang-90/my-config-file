@@ -10,7 +10,7 @@ then
 	mkdir ~/bin
 fi
 
-$CURRENT_DIR=$(pwd)
+CURRENT_DIR=$(pwd)
 
 # install fzf
 if [ ! -e ~/.fzf ]
