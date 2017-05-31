@@ -247,6 +247,10 @@ Plug 'plasticboy/vim-markdown'
 
 "** YCM AND ITS SUPPORT PLUGIN
 Plug 'Valloric/YouCompleteMe'
+" YCM GOTO command map
+nmap ygd :YcmCompleter GoToDefinition<CR>
+nmap ygg :YcmCompleter GoToDeclaration<CR>
+nmap ygi :YcmCompleter GoToInclude<CR>
 "add dick complete
 autocmd FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
@@ -401,6 +405,7 @@ exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
 "endif
 
 " force to use vividchalk 
+colorscheme vividchalk
 colorscheme vividchalk
 set t_Co=256
 
