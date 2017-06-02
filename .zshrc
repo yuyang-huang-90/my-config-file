@@ -210,7 +210,7 @@ alias c='clear'
 alias nvimf='nvim $(fzf)'
 
 # set TERM xterm256
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 
 # for tmuxifier
 #eval "$(tmuxifier init -)"
