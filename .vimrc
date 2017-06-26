@@ -214,6 +214,16 @@ Plug 'junegunn/fzf.vim'
 " git warpper
 Plug 'tpope/vim-fugitive'
 
+"** REFRACTOR
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/lh-tags'
+Plug 'LucHermitte/lh-dev'
+Plug 'LucHermitte/lh-brackets'
+Plug 'LucHermitte/vim-refactor'
+
+"** COMMENTARY
+Plug 'tpope/vim-commentary'
+
 
 "** WEB DEV PLUGIN
 " Plug 'marijnh/tern_for_vim'
@@ -413,6 +423,4 @@ set t_Co=256
 set cursorline
 "hi CursorLine term=underline cterm=bold gui=bold
 hi Search ctermfg=black ctermbg=yellow
-
-
 
