@@ -214,17 +214,6 @@ Plug 'junegunn/fzf.vim'
 " git warpper
 Plug 'tpope/vim-fugitive'
 
-"** REFRACTOR
-Plug 'LucHermitte/lh-vim-lib'
-Plug 'LucHermitte/lh-tags'
-Plug 'LucHermitte/lh-dev'
-Plug 'LucHermitte/lh-brackets'
-Plug 'LucHermitte/vim-refactor'
-
-"** COMMENTARY
-Plug 'tpope/vim-commentary'
-
-
 "** WEB DEV PLUGIN
 " Plug 'marijnh/tern_for_vim'
 " Plug 'elzr/vim-json'
