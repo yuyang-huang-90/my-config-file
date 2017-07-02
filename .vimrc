@@ -142,10 +142,10 @@ imap <C-l> <CR><ESC>ko
 "change focus
 imap <F2> <ESC>zzko
 " fast move
-map <c-h> <c-w>h
-map <c-k> <c-w>k
-map <c-j> <c-w>j
-map <c-l> <c-w>l
+"map <c-h> <c-w>h
+"map <c-k> <c-w>k
+"map <c-j> <c-w>j
+"map <c-l> <c-w>l
 
 "======END OF BASIC CONFIG========
 
@@ -261,7 +261,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "autocmd FileType ruby,java   let g:EclimCompletionMethod='omnifunc'
 
 
-" ** SYNTAX CHECK 
+" ** SYNTAX CHECK
 "syntacstic config
 "Plug 'scrooloose/syntastic'
 "syntastic config
@@ -275,6 +275,21 @@ let g:syntastic_xml_checkers     = ['xmllint']
 let g:syntastic_error_symbol    = 'e'
 let g:syntastic_warning_symbol  = 'w'
 let g:syntastic_mode_map        = { 'mode': 'active'}
+
+" ** REFRACTOR
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/lh-tags'
+Plug 'LucHermitte/lh-dev'
+Plug 'LucHermitte/lh-brackets'
+Plug 'LucHermitte/vim-refactor'
+
+imap <C-l>      <Plug>MarkersJumpF
+map <C-l>      <Plug>MarkersJumpF
+imap <C-k>      <Plug>MarkersJumpB
+map <C-k>      <Plug>MarkersJumpB
+
+" ** COMMENTARY
+Plug 'tpope/vim-commentary'
 
 
 "** LATEX SUIT
