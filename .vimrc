@@ -33,7 +33,7 @@ set hlsearch
 " Automatically save before commands like :next and :make
 set autowrite
 " Enable mouse usage (all modes
-set mouse=a
+"set mouse=a
 "noback
 set nobackup
 "number
@@ -59,7 +59,7 @@ set timeout timeoutlen=5000 ttimeoutlen=100
 "adjust filetype recongnization
 au BufRead {*.log,message} set ft=messages
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
-au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
+"au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
 au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
 
 "set indent
@@ -276,10 +276,10 @@ let g:syntastic_warning_symbol  = 'w'
 let g:syntastic_mode_map        = { 'mode': 'active'}
 
 " ** REFRACTOR
-Plug 'LucHermitte/lh-vim-lib'
-Plug 'LucHermitte/lh-tags'
-Plug 'LucHermitte/lh-dev'
-Plug 'LucHermitte/lh-brackets'
+"Plug 'LucHermitte/lh-vim-lib'
+"Plug 'LucHermitte/lh-tags'
+"Plug 'LucHermitte/lh-dev'
+"Plug 'LucHermitte/lh-brackets'
 Plug 'LucHermitte/vim-refactor'
 
 imap <C-l>      <Plug>MarkersJumpF
