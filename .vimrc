@@ -169,17 +169,17 @@ Plug 'majutsushi/tagbar'
 "CCtree
 Plug 'hari-rangarajan/CCTree'
 " l9 is a Vim-script library,provides some utility functions and commands
-Plug 'L9'
+Plug 'vim-scripts/L9'
 "fufinder
 "Plug 'FuzzyFinder'
-Plug 'ShowTrailingWhitespace'
+Plug 'vim-scripts/ShowTrailingWhitespace'
 " useful line up tools
-Plug 'Tabular'
+Plug 'vim-scripts/Tabular'
 Plug 'Yggdroot/indentLine'
 " log viewer C-k to refresh
-Plug 'tailtab.vim'
+Plug 'vim-scripts/tailtab.vim'
 "grep
-Plug 'grep.vim'
+Plug 'vim-scripts/grep.vim'
 "path utility
 Plug 'tpope/vim-pathogen'
 
@@ -207,6 +207,7 @@ let g:indentLine_leadingSpaceEnabled = 1
 
 " fzf plugin
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+
 Plug 'junegunn/fzf.vim'
 "cmap  fzf<CR> FZF<CR>
 
@@ -240,8 +241,8 @@ au BufRead,BufNewFile *.m,*.oct set ft=octave
 au BufRead,BufNewFile *.m,*.oct setl omnifunc=syntaxcomplete#Complete
 
 " ** SYNTAX HIGHLIGHT
-Plug 'nginx.vim'
-Plug 'haskell.vim'
+Plug 'vim-scripts/nginx.vim'
+Plug 'vim-scripts/haskell.vim'
 Plug 'plasticboy/vim-markdown'
 
 "** YCM AND ITS SUPPORT PLUGIN
