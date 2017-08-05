@@ -291,6 +291,9 @@ map <C-k>      <Plug>MarkersJumpB
 " ** COMMENTARY
 Plug 'tpope/vim-commentary'
 
+"** VIM GITTER
+Plug 'airblade/vim-gitgutter'
+
 
 "** LATEX SUIT
 Plug 'sigefried/vim-latex'
@@ -330,6 +333,7 @@ Plug 'google/vim-glaive'
 
 " **GOLANG
 Plug 'fatih/vim-go'
+" Plug 'zchee/nvim-go', {'do' : 'make'}
 
 " **VIM WIKI
 Plug 'vimwiki/vimwiki'

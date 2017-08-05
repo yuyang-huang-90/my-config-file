@@ -216,6 +216,8 @@ alias nvimf='nvim $(fzf)'
 #eval "$(tmuxifier init -)"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 
+export PATH=$PATH:~/go/bin:~/gocode/bin
 export GOPATH=$HOME/gocode
+export GOROOT=~/go
 
 
