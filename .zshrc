@@ -139,15 +139,12 @@ then
     export JAVA_HOME=$(/usr/libexec/java_home)
     export JDK_HOME=$(/usr/libexec/java_home)
 else
-    # for linux only
-    LS_COLOR='--color'
-    alias mvim='vim'
-    alias eclimd='~/eclipse/eclimd'
-    alias svim='sudo vim'
-    export PATH=$PATH:~/adt-bundle-linux-x86_64-20140702/sdk/platform-tools:~/adt-bundle-linux-x86_64-20140702/sdk/tools
-    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-    export PATH=$PATH:${JAVA_HOME}
-
+	# for linux only
+	LS_COLOR='--color'
+	alias mvim='vim'
+	alias eclimd='~/eclipse/eclimd'
+	alias svim='sudo vim'
+	export PATH=$PATH:~/adt-bundle-linux-x86_64-20140702/sdk/platform-tools:~/adt-bundle-linux-x86_64-20140702/sdk/tools
 fi
 
 #for peco snip
@@ -216,8 +213,9 @@ alias nvimf='nvim $(fzf)'
 #eval "$(tmuxifier init -)"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 
-export PATH=$PATH:~/go/bin:~/gocode/bin
+export PATH=$PATH:~/go/bin:~/gocode/bin:~/Dropbox/cloud-computing-capstone/openrepo/misc
 export GOPATH=$HOME/gocode
 export GOROOT=~/go
+export PATH=~/.bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin
 
 

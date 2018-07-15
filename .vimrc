@@ -18,7 +18,7 @@ set cindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-"set expandtab
+set expandtab
 set smarttab
 " Show matching brackets.
 set showmatch

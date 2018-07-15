@@ -31,6 +31,11 @@ alias mv='mv -i'
 
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PATH=$PATH:${JAVA_HOME}/bin
+export HADOOP_HOME=$HOME/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
