@@ -205,6 +205,7 @@ alias c='clear'
 
 # nvim alias
 alias nvimf='nvim $(fzf)'
+alias nvim='vim'
 
 # set TERM xterm256
 #export TERM="xterm-256color"
@@ -216,6 +217,6 @@ export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 export PATH=$PATH:~/go/bin:~/gocode/bin:~/Dropbox/cloud-computing-capstone/openrepo/misc
 export GOPATH=$HOME/gocode
 export GOROOT=~/go
-export PATH=~/.bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin
+export PATH=/home/m/spark/bin:~/.bin:~/sbt/bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin:/home/m/kafka/bin
 
 

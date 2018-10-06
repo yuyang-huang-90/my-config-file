@@ -2,7 +2,7 @@
 	name = sigefried
 	email = sigefriedhyy@gmail.com
 [core]
-	editor = nvim
+	editor = vim
 [color]
 	ui = true
 [filter "media"]
