@@ -142,6 +142,7 @@ else
 	# for linux only
 	LS_COLOR='--color'
 	alias mvim='vim'
+  alias nvim='vim'
 	alias eclimd='~/eclipse/eclimd'
 	alias svim='sudo vim'
 	export PATH=$PATH:~/adt-bundle-linux-x86_64-20140702/sdk/platform-tools:~/adt-bundle-linux-x86_64-20140702/sdk/tools
@@ -205,7 +206,6 @@ alias c='clear'
 
 # nvim alias
 alias nvimf='nvim $(fzf)'
-alias nvim='vim'
 
 # set TERM xterm256
 #export TERM="xterm-256color"
@@ -220,3 +220,11 @@ export GOROOT=~/go
 export PATH=/home/m/spark/bin:~/.bin:~/sbt/bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin:/home/m/kafka/bin
 
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/m/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/m/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/m/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/m/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+# rust
+source $HOME/.cargo/env

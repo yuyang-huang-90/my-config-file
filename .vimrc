@@ -42,6 +42,7 @@ set number
 set ru
 "status line
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
 "tab completion
 "set wildmode=list:full
 "syntax
@@ -183,6 +184,7 @@ Plug 'vim-scripts/grep.vim'
 "path utility
 Plug 'tpope/vim-pathogen'
 
+
 " nerd tree setting and key bind
 autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
 cmap NT<CR> NERDTree<CR>
@@ -231,6 +233,11 @@ Plug 'tpope/vim-fugitive'
 "** RUBY & RAILS
 Plug 'vim-ruby/vim-ruby'
 " Plug 'tpope/vim-rails'
+
+"** RUST
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+let g:racer_cmd = "/home/m/.cargo/bin/racer"
 
 
 "** ADDITIONAL SYMTAX
