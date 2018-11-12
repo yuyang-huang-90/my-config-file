@@ -205,7 +205,7 @@ cmap TBC<CR> TagbarClose<CR>
 "cmap fl<CR> FufLine<CR>
 "cmap fd<CR> FufDir<CR>
 " indentLine setting and key bind
-let g:indentLine_leadingSpaceEnabled = 1
+"let g:indentLine_leadingSpaceEnabled = 1
 
 " fzf plugin
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }

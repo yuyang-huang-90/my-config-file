@@ -228,3 +228,5 @@ if [ -f '/home/m/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/m/Dow
 if [ -f '/home/m/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/m/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 # rust
 source $HOME/.cargo/env
+eval $(thefuck --alias)
+

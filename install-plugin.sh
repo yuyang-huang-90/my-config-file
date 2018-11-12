@@ -19,11 +19,37 @@ then
 	~/.fzf/install
 fi
 
-# install enhancd
+# install enhancd replacement for cd
 if [ ! -e ~/bin/enhancd ]
 then
 	git clone https://github.com/b4b4r07/enhancd ~/bin/enhancd
 fi
 
-echo "plut install complete"
+
+if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
+then
+  echo "System is Mac..."
+else
+  echo "System is Linux..."
+  # install CLI tools
+  sudo apt install tree
+  ## file analyser replacement for ls
+  sudo apt install nnn
+  ## replacement for top
+  sudo apt install htop
+  ## replacement for df
+  sudo apt install pydf
+  ## replacement for traceroute
+  sudo apt install mtr
+  ## replacement for grep
+  sudo apt install silversearcher-ag
+  ## command line helper
+  sudo apt install thefuck
+  ## replacement for du
+  sudo apt install ncdu
+  ## fd replacement for find
+  sudo dpkg -i fd-musl_7.2.0_amd64.deb
+fi
+
+echo "full install complete"
 
