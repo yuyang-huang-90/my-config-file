@@ -29,6 +29,13 @@ fi
 if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
 then
   echo "System is Mac..."
+  brew install tree
+  brew install fd
+  brew install nnn
+  brew install htop
+  brew install mtr
+  brew install ncdu
+  brew install ag
 else
   echo "System is Linux..."
   # install CLI tools

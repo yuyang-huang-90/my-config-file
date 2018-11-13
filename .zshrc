@@ -131,8 +131,6 @@ RPROMPT=\$vcs_info_msg_0_
 if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
 then
     LS_COLOR='-G'
-    alias mvim='/Applications/MacVim.app/Contents/MacOS/Vim'
-    alias svim='sudo /Applications/MacVim.app/Contents/MacOS/Vim'
     alias eclimd='/Applications/eclipse/eclimd'
     alias sage='/Applications/sage/local/bin/sage'
     export SAGE_ROOT='/Applications/sage'
@@ -146,6 +144,7 @@ else
 	alias eclimd='~/eclipse/eclimd'
 	alias svim='sudo vim'
 	export PATH=$PATH:~/adt-bundle-linux-x86_64-20140702/sdk/platform-tools:~/adt-bundle-linux-x86_64-20140702/sdk/tools
+  eval $(thefuck --alias)
 fi
 
 #for peco snip
@@ -228,5 +227,4 @@ if [ -f '/home/m/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/m/Dow
 if [ -f '/home/m/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/m/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 # rust
 source $HOME/.cargo/env
-eval $(thefuck --alias)
 
