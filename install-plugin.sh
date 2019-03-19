@@ -36,6 +36,7 @@ then
   brew install mtr
   brew install ncdu
   brew install ag
+  brew install ranger
 else
   echo "System is Linux..."
   # install CLI tools
@@ -56,6 +57,8 @@ else
   sudo apt install ncdu
   ## fd replacement for find
   sudo dpkg -i fd-musl_7.2.0_amd64.deb
+  ## ranger for good cd/ls
+  sudo apt install ranger
 fi
 
 echo "full install complete"

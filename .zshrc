@@ -134,6 +134,7 @@ then
     alias eclimd='/Applications/eclipse/eclimd'
     alias sage='/Applications/sage/local/bin/sage'
     export SAGE_ROOT='/Applications/sage'
+	  alias mvim='/usr/local/bin/vim'
     export JAVA_HOME=$(/usr/libexec/java_home)
     export JDK_HOME=$(/usr/libexec/java_home)
 else
@@ -219,12 +220,12 @@ export GOROOT=~/go
 export PATH=/home/m/spark/bin:~/.bin:~/sbt/bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin:/home/m/kafka/bin
 
 
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/m/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/m/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/m/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/m/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 # rust
 source $HOME/.cargo/env
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/m/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/m/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/m/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/m/google-cloud-sdk/completion.zsh.inc'; fi
