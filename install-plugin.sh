@@ -59,6 +59,8 @@ else
   sudo dpkg -i fd-musl_7.2.0_amd64.deb
   ## ranger for good cd/ls
   sudo apt install ranger
+  ## bat replacement for cat
+  sudo dpkg -i bat_0.10.0_amd64.deb
 fi
 
 echo "full install complete"
