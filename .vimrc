@@ -163,12 +163,8 @@ Plug 'tpope/vim-surround'
 " nerd tree
 Plug 'scrooloose/nerdtree'
 "BufExplForceSyntaxEnable = 1
-"minibufexpl
-Plug 'fholgado/minibufexpl.vim'
 "tagbar
 Plug 'majutsushi/tagbar'
-"CCtree
-Plug 'hari-rangarajan/CCTree'
 " l9 is a Vim-script library,provides some utility functions and commands
 Plug 'vim-scripts/L9'
 "fufinder
@@ -179,8 +175,6 @@ Plug 'vim-scripts/Tabular'
 Plug 'Yggdroot/indentLine'
 " log viewer C-k to refresh
 Plug 'vim-scripts/tailtab.vim'
-"grep
-Plug 'vim-scripts/grep.vim'
 "path utility
 Plug 'tpope/vim-pathogen'
 
@@ -316,7 +310,7 @@ let g:Tex_AutoFolding=0
 "** VIM TEMPLATE
 Plug 'aperezdc/vim-template'
 " template config
-let g:email                     = 'Yuyang@jp.sony.com'
+let g:email                     = 'sigefriedhyy@gmail.com'
 let g:username                  = 'yuyang'
 
 

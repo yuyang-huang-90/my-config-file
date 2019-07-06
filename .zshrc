@@ -215,17 +215,28 @@ alias nvimf='nvim $(fzf)'
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 
 export PATH=$PATH:~/go/bin:~/gocode/bin:~/Dropbox/cloud-computing-capstone/openrepo/misc
-export GOPATH=$HOME/gocode
-export GOROOT=~/go
-export PATH=/home/m/spark/bin:~/.bin:~/sbt/bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin:/home/m/kafka/bin
+#export GOPATH=$HOME/gocode
+#export GOROOT=~/go
+export PATH=$HOME/anaconda3/bin:/home/m/spark/bin:~/.bin:~/sbt/bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin:/home/m/kafka/bin
 
 
 # rust
 source $HOME/.cargo/env
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/m/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/m/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/m/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/m/google-cloud-sdk/completion.zsh.inc'; fi
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/m/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/m/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/m/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/m/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
