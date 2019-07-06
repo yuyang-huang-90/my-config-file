@@ -183,13 +183,8 @@ Plug 'tpope/vim-pathogen'
 autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
 cmap NT<CR> NERDTree<CR>
 cmap NTC<CR> NERDTreeClose<CR>
-" minibuf setting and buffer move key bind
-let g:miniBufExplForceSyntaxEnable = 1
-cmap MBF<CR> MBEFocus<CR>
-nmap <Leader>f :MBEFocus<CR>
 nmap mp :bp<CR>
 nmap mn :bn<CR>
-cmap MBC<CR> MBEClose<CR>
 " tagbar setting and key bind
 cmap TB<CR> TagbarToggle<CR>
 cmap TBC<CR> TagbarClose<CR>
@@ -205,7 +200,11 @@ cmap TBC<CR> TagbarClose<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 
 Plug 'junegunn/fzf.vim'
-"cmap  fzf<CR> FZF<CR>
+map  <Leader>f :FZF<CR>
+map  <Leader>l :Lines<CR>
+map  <Leader>b :Buf<CR>
+map  <Leader>a :Ag<CR>
+map  <Leader>r :Rg<CR>
 
 "** VERSION CONTROL PLUGIN
 " git warpper
