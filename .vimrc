@@ -167,14 +167,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 " l9 is a Vim-script library,provides some utility functions and commands
 Plug 'vim-scripts/L9'
-"fufinder
-"Plug 'FuzzyFinder'
 Plug 'vim-scripts/ShowTrailingWhitespace'
 " useful line up tools
 Plug 'vim-scripts/Tabular'
 Plug 'Yggdroot/indentLine'
-" log viewer C-k to refresh
-Plug 'vim-scripts/tailtab.vim'
 "path utility
 Plug 'tpope/vim-pathogen'
 
@@ -224,7 +220,7 @@ Plug 'tpope/vim-fugitive'
 
 
 "** RUBY & RAILS
-Plug 'vim-ruby/vim-ruby'
+"Plug 'vim-ruby/vim-ruby'
 " Plug 'tpope/vim-rails'
 
 "** RUST
@@ -235,10 +231,10 @@ let g:racer_cmd = "/home/m/.cargo/bin/racer"
 
 "** ADDITIONAL SYMTAX
 "octave
-Plug 'lsdr/octave.vim'
+"Plug 'lsdr/octave.vim'
 " octave setting and config
-au BufRead,BufNewFile *.m,*.oct set ft=octave 
-au BufRead,BufNewFile *.m,*.oct setl omnifunc=syntaxcomplete#Complete
+"au BufRead,BufNewFile *.m,*.oct set ft=octave 
+"au BufRead,BufNewFile *.m,*.oct setl omnifunc=syntaxcomplete#Complete
 
 " ** SYNTAX HIGHLIGHT
 Plug 'vim-scripts/nginx.vim'
@@ -252,11 +248,11 @@ nmap ygd :YcmCompleter GoToDefinition<CR>
 nmap ygg :YcmCompleter GoToDeclaration<CR>
 nmap ygi :YcmCompleter GoToInclude<CR>
 "add dick complete
-autocmd FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"autocmd FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
+"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "eclim
 "autocmd FileType ruby,java   let g:EclimCompletionMethod='omnifunc'
 
@@ -296,14 +292,7 @@ Plug 'airblade/vim-gitgutter'
 
 
 "** LATEX SUIT
-Plug 'sigefried/vim-latex'
-"latex suit setting and keymap
-set grepprg=grep\ -nH\ $*
-set shellslash
-let g:tex_flavor='latex'
-autocmd Filetype tex set iskeyword+=:
-autocmd Filetype tex setlocal makeprg=make
-let g:Tex_AutoFolding=0
+Plug 'lervag/vimtex'
 
 
 "** VIM TEMPLATE
@@ -336,10 +325,10 @@ Plug 'fatih/vim-go'
 " Plug 'zchee/nvim-go', {'do' : 'make'}
 
 " **VIM WIKI
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 
 " **VIM DRAW
-Plug 'vim-scripts/DrawIt'
+"Plug 'vim-scripts/DrawIt'
 
 " All of your Plugs must be added before the following line
 call plug#end()
