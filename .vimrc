@@ -413,12 +413,12 @@ exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
 "endif
 
 " force to use vividchalk 
-colorscheme vividchalk
+" colorscheme vividchalk
 colorscheme vividchalk
 set t_Co=256
 
 " cursor under line
 set cursorline
-"hi CursorLine term=underline cterm=bold gui=bold
+hi CursorLine term=underline cterm=bold gui=bold
 hi Search ctermfg=black ctermbg=yellow
 
