@@ -1,10 +1,8 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH:.:~/bin:/usr/local/go/bin
-export PATH=/usr/local/opt/ruby/bin:$PATH
-export PATH="$HOME/.rvm/bin:$HOME/Dropbox/tools/script:$PATH" # Add RVM to PATH for scripting
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-export PATH="~/bin:$PATH"
+#export PATH=/usr/local/opt/ruby/bin:$PATH
+#export PATH="$HOME/.rvm/bin:$HOME/Dropbox/tools/script:$PATH" # Add RVM to PATH for scripting
 
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=1000
@@ -210,18 +208,15 @@ alias nvimf='nvim $(fzf)'
 # set TERM xterm256
 #export TERM="xterm-256color"
 
-# for tmuxifier
-#eval "$(tmuxifier init -)"
-export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 
-export PATH=$PATH:~/go/bin:~/gocode/bin:~/Dropbox/cloud-computing-capstone/openrepo/misc
+#export PATH=$PATH:~/go/bin:~/gocode/bin:~/Dropbox/cloud-computing-capstone/openrepo/misc
 #export GOPATH=$HOME/gocode
 #export GOROOT=~/go
-export PATH=$HOME/anaconda3/bin:/home/m/spark/bin:~/.bin:~/sbt/bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin:/home/m/kafka/bin
+#export PATH=$HOME/anaconda3/bin:/home/m/spark/bin:~/.bin:~/sbt/bin:/home/m/pintos/src/utils:$PATH:/home/m/sbt/bin:/home/m/kafka/bin
 
 
 # rust
-source $HOME/.cargo/env
+#source $HOME/.cargo/env
 
 
 

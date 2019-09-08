@@ -226,7 +226,7 @@ Plug 'tpope/vim-fugitive'
 "** RUST
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-let g:racer_cmd = "/home/m/.cargo/bin/racer"
+let g:racer_cmd = "$HOME/.cargo/bin/racer"
 
 
 "** ADDITIONAL SYMTAX
