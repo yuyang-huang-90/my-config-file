@@ -1,6 +1,7 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH:.:~/bin:/usr/local/go/bin
+export PATH=~/homebrew/bin:/usr/local/sbin:/usr/local/bin:$PATH:.:~/bin:/usr/local/go/bin
 #export PATH=/usr/local/opt/ruby/bin:$PATH
 #export PATH="$HOME/.rvm/bin:$HOME/Dropbox/tools/script:$PATH" # Add RVM to PATH for scripting
 
@@ -133,8 +134,8 @@ then
     alias sage='/Applications/sage/local/bin/sage'
     export SAGE_ROOT='/Applications/sage'
 	  alias mvim='/usr/local/bin/vim'
-    export JAVA_HOME=$(/usr/libexec/java_home)
-    export JDK_HOME=$(/usr/libexec/java_home)
+    #export JAVA_HOME=$(/usr/libexec/java_home)
+    #export JDK_HOME=$(/usr/libexec/java_home)
 else
 	# for linux only
 	LS_COLOR='--color'
@@ -181,9 +182,19 @@ then
 	source ~/bin/enhancd/init.sh
 fi
 
+
 #git related config
-turn_on_git_stage_check
-source ~/zsh-plugin/git.plugin.zsh
+if [ -f ~/zsh-plugin/git.plugin.zsh ]
+then
+  turn_on_git_stage_check
+  source ~/zsh-plugin/git.plugin.zsh
+fi
+
+# auto suggestion
+if [ -f ~/zsh-plugin/zsh-autosuggestions/zsh-autosuggestions.zsh ]
+then
+  source ~/zsh-plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
 # common alias
 alias ls='ls $LS_COLOR'

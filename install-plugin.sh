@@ -25,6 +25,12 @@ then
 	git clone https://github.com/b4b4r07/enhancd ~/bin/enhancd
 fi
 
+# zsh autocomplete
+if [ ! -e ~/bin/enhancd ]
+then
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/zsh-plugin/zsh-autosuggestions
+fi
+
 
 if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
 then
