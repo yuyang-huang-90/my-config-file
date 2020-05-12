@@ -6,8 +6,8 @@ export PATH=~/homebrew/bin:/usr/local/sbin:/usr/local/bin:$PATH:.:~/bin:/usr/loc
 #export PATH="$HOME/.rvm/bin:$HOME/Dropbox/tools/script:$PATH" # Add RVM to PATH for scripting
 
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=50000
+SAVEHIST=50000
 
 
 # rebind backward search to fix ctrl-r broken in tmux
