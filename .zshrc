@@ -1,5 +1,5 @@
 export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LC_AL=en_US.UTF-8
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH:.:~/bin:/usr/local/go/bin
 export PATH=~/homebrew/bin:/usr/local/sbin:/usr/local/bin:$PATH:.:~/bin:/usr/local/go/bin
 #export PATH=/usr/local/opt/ruby/bin:$PATH
@@ -197,10 +197,19 @@ then
 fi
 
 # common alias
-alias ls='ls $LS_COLOR'
-alias ll='ls $LS_COLOR -alF'
-alias la='ls $LS_COLOR -CA'
-alias l='ls $LS_COLOR -CF'
+if [ -e ~/.cargo/bin/exa ] || [ -e /usr/local/bin/exa ]
+then
+  alias ls='exa'
+  alias ll='exa -la'
+  alias la='exa -la'
+  alias l='exa'
+else
+  alias ls='ls $LS_COLOR'
+  alias ll='ls $LS_COLOR -alF'
+  alias la='ls $LS_COLOR -CA'
+  alias l='ls $LS_COLOR -CF'
+fi
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
