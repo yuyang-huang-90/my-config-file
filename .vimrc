@@ -142,11 +142,8 @@ imap [<CR> []><CR><ESC>==O
 imap <C-l> <CR><ESC>ko
 "change focus
 imap <F2> <ESC>zzko
-" fast move
-"map <c-h> <c-w>h
-"map <c-k> <c-w>k
-"map <c-j> <c-w>j
-"map <c-l> <c-w>l
+" replace word with paste item
+map <c-j> cw<c-r>0<ESC>
 
 "======END OF BASIC CONFIG========
 
