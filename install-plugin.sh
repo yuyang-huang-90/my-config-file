@@ -72,5 +72,8 @@ then
   cargo install exa
 fi
 
+# zsh auto suggestion
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/zsh-plugin
+
 echo "full install complete"
 
