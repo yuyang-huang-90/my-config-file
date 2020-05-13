@@ -73,7 +73,7 @@ then
 fi
 
 # zsh auto suggestion
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/zsh-plugin
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/zsh-plugin/zsh-autosuggestions
 
 echo "full install complete"
 
