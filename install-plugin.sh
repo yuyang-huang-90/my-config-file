@@ -57,16 +57,19 @@ else
   sudo apt install mtr
   ## replacement for grep
   sudo apt install silversearcher-ag
-  ## command line helper
-  sudo apt install thefuck
   ## replacement for du
   sudo apt install ncdu
   ## fd replacement for find
-  sudo dpkg -i fd-musl_7.2.0_amd64.deb
+  sudo apt install fd-musl
   ## ranger for good cd/ls
   sudo apt install ranger
-  ## bat replacement for cat
-  sudo dpkg -i bat_0.10.0_amd64.deb
+fi
+
+# install tools using cargo
+if [ ! -z $(which cargo) ]
+then
+  cargo install bat
+  cargo install exa
 fi
 
 echo "full install complete"
