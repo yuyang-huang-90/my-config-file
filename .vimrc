@@ -189,9 +189,9 @@ cmap TBC<CR> TagbarClose<CR>
 " indentLine setting and key bind
 "let g:indentLine_leadingSpaceEnabled = 1
 
-" fzf plugin
+" fuzzy finder
+Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
-
 Plug 'junegunn/fzf.vim'
 map  <Leader>f :FZF<CR>
 map  <Leader>l :Lines<CR>
