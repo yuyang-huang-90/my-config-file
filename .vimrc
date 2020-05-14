@@ -143,7 +143,7 @@ imap <C-l> <CR><ESC>ko
 "change focus
 imap <F2> <ESC>zzko
 " replace word with paste item
-map <c-j> cw<c-r>0<ESC>
+map <c-j> cw<c-r>0<ESC>b
 
 "======END OF BASIC CONFIG========
 

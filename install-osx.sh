@@ -39,6 +39,7 @@ base="$(pwd)"
 echo "link dot file..."
 
 ln -sfnh $base/.zshrc ${TARGET_DIR}/
+ln -sfnh $base/.zprofile ${TARGET_DIR}/
 ln -sfnh $base/.vimrc ${TARGET_DIR}/
 ln -sfnh $base/.emacs ${TARGET_DIR}/
 ln -sfnh $base/.hgrc ${TARGET_DIR}/

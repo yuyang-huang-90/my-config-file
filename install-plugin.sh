@@ -65,13 +65,6 @@ else
   sudo apt install ranger
 fi
 
-# install tools using cargo
-if [ ! -z $(which cargo) ]
-then
-  cargo install bat
-  cargo install exa
-fi
-
 # zsh auto suggestion
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/zsh-plugin/zsh-autosuggestions
 
