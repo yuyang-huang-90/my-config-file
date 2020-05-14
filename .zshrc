@@ -196,7 +196,7 @@ then
   source ~/zsh-plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-# common alias
+# exa alias
 if [ -e ~/.cargo/bin/exa ] || [ -e /usr/local/bin/exa ]
 then
   alias ls='exa'
@@ -210,10 +210,28 @@ else
   alias l='ls $LS_COLOR -CF'
 fi
 
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias vp3='source ~/workspace/python3-venv/bin/activate'
+# rg alias
+if [ -e ~/.cargo/bin/rg ] || [ -e /usr/local/bin/rg ]
+then
+  alias grep='rg'
+  alias egrep='rg'
+else
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
+
+# procs alias
+if [ -e ~/.cargo/bin/procs ] || [ -e /usr/local/bin/procs ]
+then
+  alias ps='procs'
+fi
+
+# bat alias
+if [ -e ~/.cargo/bin/bat ] || [ -e /usr/local/bin/bat ]
+then
+  alias cat='bat'
+fi
 
 
 # some more alias to avoid making mistake
