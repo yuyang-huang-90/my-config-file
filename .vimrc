@@ -145,6 +145,27 @@ imap <F2> <ESC>zzko
 " replace word with paste item
 map <c-j> cw<c-r>0<ESC>b
 
+"quick esc
+nnoremap <C-k> <Esc>
+inoremap <C-k> <Esc>
+vnoremap <C-k> <Esc>
+snoremap <C-k> <Esc>
+xnoremap <C-k> <Esc>
+cnoremap <C-k> <Esc>
+onoremap <C-k> <Esc>
+lnoremap <C-k> <Esc>
+tnoremap <C-k> <Esc>
+
+nnoremap <C-c> <Esc>
+inoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
+snoremap <C-c> <Esc>
+xnoremap <C-c> <Esc>
+cnoremap <C-c> <Esc>
+onoremap <C-c> <Esc>
+lnoremap <C-c> <Esc>
+tnoremap <C-c> <Esc>
+
 "======END OF BASIC CONFIG========
 
 
@@ -269,17 +290,7 @@ let g:syntastic_error_symbol    = 'e'
 let g:syntastic_warning_symbol  = 'w'
 let g:syntastic_mode_map        = { 'mode': 'active'}
 
-" ** REFRACTOR
-"Plug 'LucHermitte/lh-vim-lib'
-"Plug 'LucHermitte/lh-tags'
-"Plug 'LucHermitte/lh-dev'
-"Plug 'LucHermitte/lh-brackets'
-Plug 'LucHermitte/vim-refactor'
 
-imap <C-l>      <Plug>MarkersJumpF
-map <C-l>      <Plug>MarkersJumpF
-imap <C-k>      <Plug>MarkersJumpB
-map <C-k>      <Plug>MarkersJumpB
 
 " ** COMMENTARY
 Plug 'tpope/vim-commentary'
