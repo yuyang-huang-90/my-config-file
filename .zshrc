@@ -191,9 +191,9 @@ then
 fi
 
 # auto suggestion
-if [ -f ~/zsh-plugin/zsh-autosuggestions/zsh-autosuggestions.zsh ]
+if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]
 then
-  source ~/zsh-plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # exa alias
