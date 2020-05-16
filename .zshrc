@@ -133,7 +133,12 @@ then
     alias eclimd='/Applications/eclipse/eclimd'
     alias sage='/Applications/sage/local/bin/sage'
     export SAGE_ROOT='/Applications/sage'
-	  alias mvim='/usr/local/bin/vim'
+    if [ -d ~/homebrew ]
+    then
+	    alias mvim='~/homebrew/bin/vim'
+    else
+	    alias mvim='/usr/local/bin/vim'
+    fi
     #export JAVA_HOME=$(/usr/libexec/java_home)
     #export JDK_HOME=$(/usr/libexec/java_home)
 else
