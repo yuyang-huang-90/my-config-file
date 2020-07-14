@@ -143,7 +143,7 @@ imap <C-l> <CR><ESC>ko
 "change focus
 imap <F2> <ESC>zzko
 " replace word with paste item
-map <c-j> cw<c-r>0<ESC>b
+map <C-j> cw<c-r>0<ESC>b
 
 "quick esc
 nnoremap <C-k> <Esc>
