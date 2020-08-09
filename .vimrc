@@ -302,6 +302,8 @@ Plug 'airblade/vim-gitgutter'
 "** LATEX SUIT
 Plug 'lervag/vimtex'
 
+let g:tex_flavor = 'latex'
+
 
 "** VIM TEMPLATE
 Plug 'aperezdc/vim-template'
