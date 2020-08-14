@@ -60,7 +60,7 @@ else
   ## replacement for du
   sudo apt install ncdu
   ## fd replacement for find
-  sudo apt install fd-musl
+  sudo apt install fd-find
   ## ranger for good cd/ls
   sudo apt install ranger
 fi

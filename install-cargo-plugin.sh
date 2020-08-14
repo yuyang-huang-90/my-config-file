@@ -12,7 +12,6 @@ then
   cargo install bat
   cargo install exa
   cargo install tokei
-  cargo install sn
   cargo install procs
   cargo install ripgrep
 fi
