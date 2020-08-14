@@ -227,10 +227,10 @@ else
 fi
 
 # procs alias
-if [ -e ~/.cargo/bin/procs ] || [ -e /usr/local/bin/procs ]
-then
-  alias ps='procs'
-fi
+# if [ -e ~/.cargo/bin/procs ] || [ -e /usr/local/bin/procs ]
+# then
+#   alias ps='procs'
+# fi
 
 # bat alias
 if [ -e ~/.cargo/bin/bat ] || [ -e /usr/local/bin/bat ]
