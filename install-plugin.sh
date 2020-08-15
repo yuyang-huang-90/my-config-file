@@ -25,10 +25,10 @@ then
 	git clone https://github.com/b4b4r07/enhancd ~/bin/enhancd
 fi
 
-# zsh autocomplete
-if [ ! -e ~/bin/enhancd ]
+# zsh auto suggestion
+if [ ! -e ~/.zsh/zsh-autosuggestions ]
 then
-	git clone https://github.com/zsh-users/zsh-autosuggestions ~/zsh-plugin/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
 
 
@@ -45,28 +45,16 @@ then
   brew install ranger
 else
   echo "System is Linux..."
-  # install CLI tools
   sudo apt install tree
-  ## file analyser replacement for ls
   sudo apt install nnn
-  ## replacement for top
   sudo apt install htop
-  ## replacement for df
   sudo apt install pydf
-  ## replacement for traceroute
   sudo apt install mtr
-  ## replacement for grep
   sudo apt install silversearcher-ag
-  ## replacement for du
   sudo apt install ncdu
-  ## fd replacement for find
   sudo apt install fd-find
-  ## ranger for good cd/ls
   sudo apt install ranger
 fi
-
-# zsh auto suggestion
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 echo "full install complete"
 
