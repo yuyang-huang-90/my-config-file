@@ -202,18 +202,14 @@ then
 fi
 
 # exa alias
-if [ -e ~/.cargo/bin/exa ] || [ -e /usr/local/bin/exa ]
-then
-  alias ls='exa'
-  alias ll='exa -la'
-  alias la='exa -la'
-  alias l='exa'
-else
-  alias ls='ls $LS_COLOR'
-  alias ll='ls $LS_COLOR -alF'
-  alias la='ls $LS_COLOR -CA'
-  alias l='ls $LS_COLOR -CF'
-fi
+alias es='exa'
+alias el='exa -la'
+alias ea='exa -a'
+alias l='exa'
+alias ls='ls $LS_COLOR'
+alias ll='ls $LS_COLOR -alF'
+alias la='ls $LS_COLOR -CA'
+alias l='ls $LS_COLOR -CF'
 
 # rg alias
 if [ -e ~/.cargo/bin/rg ] || [ -e /usr/local/bin/rg ]

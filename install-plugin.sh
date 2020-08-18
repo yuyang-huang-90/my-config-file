@@ -36,6 +36,7 @@ if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
 then
   echo "System is Mac..."
   brew install tree
+  brew install exa
   brew install fd
   brew install nnn
   brew install htop
@@ -46,6 +47,7 @@ then
 else
   echo "System is Linux..."
   sudo apt install tree
+  sudo apt install exa
   sudo apt install nnn
   sudo apt install htop
   sudo apt install pydf
