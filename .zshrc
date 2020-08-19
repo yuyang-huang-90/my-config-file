@@ -202,7 +202,7 @@ then
 fi
 
 # exa alias
-alias es='exa'
+alias e='exa'
 alias el='exa -la'
 alias ea='exa -a'
 alias l='exa'
