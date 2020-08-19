@@ -297,7 +297,7 @@ Plug 'tpope/vim-commentary'
 
 "** VIM GITTER
 Plug 'airblade/vim-gitgutter'
-
+set updatetime=1000
 
 "** LATEX SUIT
 Plug 'lervag/vimtex'
