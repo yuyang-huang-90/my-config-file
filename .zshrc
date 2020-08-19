@@ -203,7 +203,7 @@ fi
 
 # exa alias
 alias e='exa'
-alias el='exa -la'
+alias el='exa -la -g'
 alias ea='exa -a'
 alias l='exa'
 alias ls='ls $LS_COLOR'
