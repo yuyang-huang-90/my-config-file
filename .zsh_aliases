@@ -1,0 +1,60 @@
+
+# some difference between OS X and Linux
+# for mac only
+if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
+then
+    LS_COLOR='-G'
+    alias eclimd='/Applications/eclipse/eclimd'
+    if [ -d ~/homebrew ]
+    then
+      alias mvim='~/homebrew/bin/vim'
+    else
+      alias mvim='/usr/local/bin/vim'
+    fi
+  else
+    # for linux only
+    LS_COLOR='--color'
+    alias mvim='vim'
+    alias nvim='vim'
+    alias eclimd='~/eclipse/eclimd'
+    alias svim='sudo vim'
+fi
+# exa alias
+alias e='exa'
+alias el='exa -la -g'
+alias ea='exa -a'
+alias l='exa'
+alias ls='ls $LS_COLOR'
+alias ll='ls $LS_COLOR -alF'
+alias la='ls $LS_COLOR -CA'
+alias l='ls $LS_COLOR -CF'
+
+# rg alias
+if [ -e ~/.cargo/bin/rg ] || [ -e /usr/local/bin/rg ]
+then
+  alias grep='rg'
+  alias egrep='rg'
+else
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
+
+# bat alias
+if [ -e ~/.cargo/bin/bat ] || [ -e /usr/local/bin/bat ]
+then
+  alias cat='bat'
+fi
+
+
+# some more alias to avoid making mistake
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias c='clear'
+
+# nvim alias
+alias nvimf='nvim $(fzf)'
+
+#git
+alias gco='git checkout $(git branch | fzf)'
