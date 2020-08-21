@@ -45,14 +45,15 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%0
 set laststatus=2
 "tab completion
 "set wildmode=list:full
-"syntax
-syntax on
 
 
 "ctags set tag=tags set autochdir
 
 "word warp
 set tw=79
+
+" update time
+set updatetime=2000
 
 "fix the hotkey delay problem
 set timeout timeoutlen=5000 ttimeoutlen=100
@@ -85,25 +86,9 @@ set foldopen=block,hor,tag    " what movements open folds
 set foldopen+=percent,mark
 set foldopen+=quickfix
 nmap <Space> za
-"set foldmethosds
-autocmd FileType javascript setl fdm=syntax
-autocmd FileType c          setl fdm=syntax
-autocmd FileType cpp        setl fdm=syntax
-autocmd FileType objc       setl fdm=syntax
-autocmd FileType java       setl fdm=syntax
-autocmd FileType xml        setl fdm=syntax
-autocmd FileType * call DisableSyntaxFoldForLongFile()
 
-"compile & run
-autocmd FileType python map <buffer> <F5> <ESC>:!python3 %:p<CR>
-autocmd FileType ruby   map <buffer> <F5> <ESC>:!ruby %:p<CR>
-autocmd FileType cpp    map <buffer> <F5> <ESC>:make<CR>
-autocmd FileType c      map <buffer> <F5> <ESC>:make<CR>
-autocmd FileType java   map <buffer> <F5> <ESC>:make<CR>
-autocmd Filetype cpp    map <buffer> <F4> <ESC>:!clang++ -g -Wall -std=c++11 % -o %:r<CR>
-autocmd Filetype cpp    map <buffer> <F6> <ESC>:!./%:r<CR>
-autocmd Filetype c      map <buffer> <F4> <ESC>:!clang -g -Wall -std=c++11 % -o %:r<CR>
-autocmd Filetype c      map <buffer> <F6> <ESC>:!./%:r<CR>
+" Automatically change the working path to the path of the current file
+"autocmd BufNewFile,BufEnter * silent! lcd %:p:h
 
 "smart tab mapping
 map <D-1> 1gt
@@ -144,18 +129,33 @@ imap <C-l> <CR><ESC>ko
 imap <F2> <ESC>zzko
 " replace word with paste item
 map <C-j> cw<c-r>0<ESC>b
+"move
+nmap mp :bp<CR>
+nmap mn :bn<CR>
+map  <Leader>f :FZF<CR>
+map  <Leader>l :Lines<CR>
+map  <Leader>b :Buf<CR>
+map  <Leader>a :Ag<CR>
+map  <Leader>r :Rg<CR>
+autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
+cmap NT<CR> NERDTree<CR>
+cmap NTC<CR> NERDTreeClose<CR>
+" tagbar setting and key bind
+cmap TB<CR> TagbarToggle<CR>
+cmap TBC<CR> TagbarClose<CR>
+
+"quick close
+nnoremap <C-k> :close<CR>
+inoremap <C-k> :close<CR>
+vnoremap <C-k> :close<CR>
+snoremap <C-k> :close<CR>
+xnoremap <C-k> :close<CR>
+cnoremap <C-k> :close<CR>
+onoremap <C-k> :close<CR>
+lnoremap <C-k> :close<CR>
+tnoremap <C-k> :close<CR>
 
 "quick esc
-nnoremap <C-k> <Esc>
-inoremap <C-k> <Esc>
-vnoremap <C-k> <Esc>
-snoremap <C-k> <Esc>
-xnoremap <C-k> <Esc>
-cnoremap <C-k> <Esc>
-onoremap <C-k> <Esc>
-lnoremap <C-k> <Esc>
-tnoremap <C-k> <Esc>
-
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
@@ -170,29 +170,52 @@ tnoremap <C-c> <Esc>
 
 
 
-"====== VIM PLUGINS========
+
+"====== END OF EXTRA CONFIG========
+
+"====== VIM EXTERNAL PLUGINS========
 " requried for vundle but no need for vim-plugin
-"filetype off
-call plug#begin('~/.vim/plugged')
+filetype off
+if isdirectory(expand('~/.vim/plugged'))
+  call plug#begin('~/.vim/plugged')
 
-"** EDITOR EXTENTION PLUGIN
-Plug 'Lokaltog/vim-easymotion'
-Plug 'tpope/vim-surround'
-" nerd tree
-Plug 'scrooloose/nerdtree'
-"BufExplForceSyntaxEnable = 1
-"tagbar
-Plug 'majutsushi/tagbar'
-" l9 is a Vim-script library,provides some utility functions and commands
-Plug 'vim-scripts/L9'
-Plug 'vim-scripts/ShowTrailingWhitespace'
-" useful line up tools
-Plug 'vim-scripts/Tabular'
-Plug 'Yggdroot/indentLine'
-"path utility
-Plug 'tpope/vim-pathogen'
+  Plug 'Lokaltog/vim-easymotion'
+  Plug 'tpope/vim-surround'
+  Plug 'scrooloose/nerdtree'
+  Plug 'tpope/vim-pathogen'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-commentary'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'majutsushi/tagbar'
+  Plug 'vim-scripts/L9'
+  Plug 'vim-scripts/ShowTrailingWhitespace'
+  Plug 'vim-scripts/Tabular'
+  Plug 'Yggdroot/indentLine'
+  Plug 'airblade/vim-rooter'
+  Plug 'tpope/vim-fugitive'
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'lervag/vimtex'
+  Plug 'google/vim-maktaba'
+  Plug 'google/vim-codefmt'
+  " Also add Glaive, which is used to configure codefmt's maktaba flags. See
+  " `:help :Glaive` for usage.
+  Plug 'google/vim-glaive'
 
+  call plug#end()
 
+endif
+
+let g:tex_flavor = 'latex'
+let g:tex_flavor = 'latex'
+
+"ycm
+nmap <C-\>s :YcmCompleter GoToReferences<CR>
+nmap <C-\>g :YcmCompleter GoToDefinition<CR>
+nmap <C-\>d :YcmCompleter GoToDeclaration<CR>
+nmap <C-\>f :YcmCompleter GoToImprecise<CR>
+nmap <C-\>e :YcmCompleter GoToSymbol
+nmap <C-\>h :YcmCompleter GoToInclude<CR>
 " nerd tree setting and key bind
 autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
 cmap NT<CR> NERDTree<CR>
@@ -202,214 +225,34 @@ nmap mn :bn<CR>
 " tagbar setting and key bind
 cmap TB<CR> TagbarToggle<CR>
 cmap TBC<CR> TagbarClose<CR>
-" fuf setting and key bind
-"cmap ff<CR> FufFile<CR>
-"cmap fb<CR> FufBuffer<CR>
-"cmap fl<CR> FufLine<CR>
-"cmap fd<CR> FufDir<CR>
-" indentLine setting and key bind
-"let g:indentLine_leadingSpaceEnabled = 1
 
-" fuzzy finder
-Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
-Plug 'junegunn/fzf.vim'
+"fzf
 map  <Leader>f :FZF<CR>
 map  <Leader>l :Lines<CR>
 map  <Leader>b :Buf<CR>
 map  <Leader>a :Ag<CR>
 map  <Leader>r :Rg<CR>
 
-"** VERSION CONTROL PLUGIN
-" git warpper
-Plug 'tpope/vim-fugitive'
-
-"** WEB DEV PLUGIN
-" Plug 'marijnh/tern_for_vim'
-" Plug 'elzr/vim-json'
-" Plug 'moll/vim-node'
-" Plug 'jQuery'
-" Plug 'xml.vim'
-" Plug 'mattn/emmet-vim'
-" Plug 'pangloss/vim-javascript'
-" Plug 'othree/html5.vim'
-" emmet setting keybind
-" autocmd Filetype xml,html,eruby imap <C-j> <C-y>j<C-y>j<C-y>n
-
-
-"** RUBY & RAILS
-"Plug 'vim-ruby/vim-ruby'
-" Plug 'tpope/vim-rails'
-
-"** RUST
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-let g:racer_cmd = "$HOME/.cargo/bin/racer"
-
-
-"** ADDITIONAL SYMTAX
-"octave
-"Plug 'lsdr/octave.vim'
-" octave setting and config
-"au BufRead,BufNewFile *.m,*.oct set ft=octave 
-"au BufRead,BufNewFile *.m,*.oct setl omnifunc=syntaxcomplete#Complete
-
-" ** SYNTAX HIGHLIGHT
-Plug 'vim-scripts/nginx.vim'
-Plug 'vim-scripts/haskell.vim'
-Plug 'plasticboy/vim-markdown'
-
-"** YCM AND ITS SUPPORT PLUGIN
-Plug 'Valloric/YouCompleteMe'
-" YCM GOTO command map
-nmap ygd :YcmCompleter GoToDefinition<CR>
-nmap ygg :YcmCompleter GoToDeclaration<CR>
-nmap ygi :YcmCompleter GoToInclude<CR>
-"add dick complete
-"autocmd FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
-"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"eclim
-"autocmd FileType ruby,java   let g:EclimCompletionMethod='omnifunc'
-
-
-" ** SYNTAX CHECK
-"syntacstic config
-"Plug 'scrooloose/syntastic'
-"syntastic config
-"call pathogen#infect()
-let g:syntastic_python_checkers  = ['pylint']
-let g:syntastic_ruby_checkers    = ['rubylint']
-let g:syntastic_xml_checkers     = ['xmllint']
-"let g:syntastic_xml_xmllint_args = '--dtdvalid tei_all.dtd'
-"let g:syntastic_cpp_checkers   = []
-"let g:syntastic_c_checkers     = []
-let g:syntastic_error_symbol    = 'e'
-let g:syntastic_warning_symbol  = 'w'
-let g:syntastic_mode_map        = { 'mode': 'active'}
-
-
-
-" ** COMMENTARY
-Plug 'tpope/vim-commentary'
-
-"** VIM GITTER
-Plug 'airblade/vim-gitgutter'
-set updatetime=2000
-
-"** LATEX SUIT
-Plug 'lervag/vimtex'
-
-let g:tex_flavor = 'latex'
-
-
-"** VIM TEMPLATE
-Plug 'aperezdc/vim-template'
-" template config
-let g:email                     = 'sigefriedhyy@gmail.com'
-let g:username                  = 'yuyang'
-
-
-"** DEBUGGER SUPPORT
-" for gdb and lldb support
-" Plug 'gilligan/vim-lldb'
-"Plug 'critiqjo/lldb.nvim'
-" pyclewn
-" Conque GDB
-"Plug 'vim-scripts/Conque-GDB'
-"
-
-" ** GOOGLE CODE FMT SUPPORT
-" Add maktaba and codefmt to the runtimepath.
-" (The latter must be installed before it can be used.)
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plug 'google/vim-glaive'
-
-" augroup autoformat_settings
-"   autocmd FileType bzl AutoFormatBuffer buildifier
-"   autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
-"   autocmd FileType dart AutoFormatBuffer dartfmt
-"   autocmd FileType go AutoFormatBuffer gofmt
-"   autocmd FileType gn AutoFormatBuffer gn
-"   autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-"   autocmd FileType java AutoFormatBuffer google-java-format
-"   autocmd FileType python AutoFormatBuffer yapf
-"   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-"   autocmd FileType rust AutoFormatBuffer rustfmt
-"   autocmd FileType vue AutoFormatBuffer prettier
-" augroup END
-
-" **GOLANG
-Plug 'fatih/vim-go'
-" Plug 'zchee/nvim-go', {'do' : 'make'}
-
-" **VIM WIKI
-"Plug 'vimwiki/vimwiki'
-
-" **VIM DRAW
-"Plug 'vim-scripts/DrawIt'
-
-" All of your Plugs must be added before the following line
-call plug#end()
-
-" the glaive#Install() should go after the 'call vundle#end()'
-call glaive#Install()
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType vue AutoFormatBuffer prettier
+augroup END
 
 " turn on indentation
 filetype plugin indent on
+"syntax
+syntax on
 
 "====== END OF VIM PLUGIN========
-
-
-"====== USERDEF FUNCTIONS========
-" auto underline
-function! s:Underline(chars)
-  let chars = empty(a:chars) ? '-' : a:chars
-  let nr_columns = virtcol('$') - 1
-  let uline = repeat(chars, (nr_columns / len(chars)) + 1)
-  put =strpart(uline, 0, nr_columns)
-endfunction
-command! -nargs=? Underline call s:Underline(<q-args>)
-
-"function! s:FixQuote()
-"    exec ":%s//'/g"
-"endfunction
-"command! FixQuote call s:FixQuote()
-
-"format xml
-function! s:XMLFormat()
-    exe '%!xmllint --format --recover - 2>/dev/null'
-endfunction
-command! XMLFormat call s:XMLFormat()
-
-"format html
-function! s:HTMLFormat()
-    exe '%!tidy -i -xml --show-errors 0 2>/dev/null'
-endfunction
-command! HTMLFormat call s:HTMLFormat()
-
-" close syntex fold if file is too long
-function! DisableSyntaxFoldForLongFile()
-    if &l:foldmethod == 'syntax' && line('$') > 1000
-        setl fdm=indent
-    endif
-endfunction
-
-" peco open
-function! PecoOpen()
-  for filename in split(system("find . -type f | peco"), "\n")
-    execute "e" filename
-  endfor
-endfunction
-cmap pe<CR> call PecoOpen()<CR>
-
-"====== END OF USERDEF FUNCTION========
-
 
 "====== EXTRA CONFIG========
 let VIMCONFIG_DIR = ''
@@ -417,32 +260,11 @@ if VIMCONFIG_DIR == ''
     let VIMCONFIG_DIR = $HOME."/.vim/conf"
 endif
 
-"exec ':so ' . VIMCONFIG_DIR . '/fuf.vim'
-exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
-"gui issue
-"if has('gui_running')
-"    if has('gui_macvim')
-"        set guifont=Menlo:h15
-"    else
-"        set guifont=Monospace\ 15
-"    endif
-"    colorscheme vividchalk
-"else
-"  "  colorscheme xterm16
-"    if has('mac')
-"        colorscheme vividchalk
-"    else
-"        colorscheme xterm16
-"    endif
-"endif
-
-" force to use vividchalk 
-" colorscheme vividchalk
+" exec ':so ' . VIMCONFIG_DIR . '/fuf.vim'
+" exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
 colorscheme vividchalk
 set t_Co=256
-
 " cursor under line
 set cursorline
 hi CursorLine term=underline cterm=bold gui=bold
 hi Search ctermfg=black ctermbg=yellow
-
