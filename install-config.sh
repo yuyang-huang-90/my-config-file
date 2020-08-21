@@ -22,7 +22,7 @@ fi
 if  [ ! -e ${TARGET_DIR}/.oh-my-zsh ]
 then
   echo "install oh my zsh"
-  curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+  git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 else
   echo "oh my zsh already installed"
 fi
