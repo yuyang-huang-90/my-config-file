@@ -29,23 +29,9 @@ alias ll='ls $LS_COLOR -alF'
 alias la='ls $LS_COLOR -CA'
 alias l='ls $LS_COLOR -CF'
 
-# rg alias
-if [ -e ~/.cargo/bin/rg ] || [ -e /usr/local/bin/rg ]
-then
-  alias grep='rg'
-  alias egrep='rg'
-else
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
-
-# bat alias
-if [ -e ~/.cargo/bin/bat ] || [ -e /usr/local/bin/bat ]
-then
-  alias cat='bat'
-fi
-
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # some more alias to avoid making mistake
 alias rm='rm -i'
