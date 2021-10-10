@@ -195,6 +195,7 @@ if isdirectory(expand('~/.vim/plugged'))
   Plug 'airblade/vim-rooter'
   Plug 'tpope/vim-fugitive'
   Plug 'Valloric/YouCompleteMe'
+  Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
   Plug 'lervag/vimtex'
   Plug 'google/vim-maktaba'
   Plug 'google/vim-codefmt'
