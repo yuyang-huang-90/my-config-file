@@ -72,6 +72,7 @@ then
   echo "install vimplug"
   curl -fLo ${TARGET_DIR}/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  mkdir -p ${TARGET_DIR}/.vim/plugged
 else
   echo "vimplug installed"
 fi
