@@ -59,6 +59,7 @@ ln ${LN_OPT} $base/.hgrc ${TARGET_DIR}/
 #ln ${LN_OPT} $base/.bashrc ${TARGET_DIR}/
 ln ${LN_OPT} $base/.gitconfig ${TARGET_DIR}/
 ln ${LN_OPT} $base/.tmux.conf ${TARGET_DIR}/
+ln ${LN_OPT} $base/.wezterm.lua ${TARGET_DIR}/
 
 echo "link dir..."
 ln ${LN_OPT} $base/conf ${TARGET_DIR}/.vim/
