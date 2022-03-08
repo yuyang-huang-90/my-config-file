@@ -202,6 +202,9 @@ if isdirectory(expand('~/.vim/plugged'))
   " Also add Glaive, which is used to configure codefmt's maktaba flags. See
   " `:help :Glaive` for usage.
   Plug 'google/vim-glaive'
+  Plug 'pangloss/vim-javascript'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'maxmellon/vim-jsx-pretty'
 
   call plug#end()
 
