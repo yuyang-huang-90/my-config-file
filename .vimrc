@@ -214,12 +214,12 @@ let g:tex_flavor = 'latex'
 let g:tex_flavor = 'latex'
 
 "ycm
-nmap <C-\>s :YcmCompleter GoToReferences<CR>
-nmap <C-\>g :YcmCompleter GoToDefinition<CR>
-nmap <C-\>d :YcmCompleter GoToDeclaration<CR>
-nmap <C-\>f :YcmCompleter GoToImprecise<CR>
-nmap <C-\>e :YcmCompleter GoToSymbol
-nmap <C-\>h :YcmCompleter GoToInclude<CR>
+" nmap <C-\>s :YcmCompleter GoToReferences<CR>
+" nmap <C-\>g :YcmCompleter GoToDefinition<CR>
+" nmap <C-\>d :YcmCompleter GoToDeclaration<CR>
+" nmap <C-\>f :YcmCompleter GoToImprecise<CR>
+" nmap <C-\>e :YcmCompleter GoToSymbol
+" nmap <C-\>h :YcmCompleter GoToInclude<CR>
 " nerd tree setting and key bind
 autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
 cmap NT<CR> NERDTree<CR>
@@ -239,7 +239,7 @@ map  <Leader>r :Rg<CR>
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  "autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
@@ -265,7 +265,7 @@ if VIMCONFIG_DIR == ''
 endif
 
 " exec ':so ' . VIMCONFIG_DIR . '/fuf.vim'
-" exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
+exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
 colorscheme vividchalk
 set t_Co=256
 " cursor under line

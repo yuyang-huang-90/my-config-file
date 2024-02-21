@@ -1,5 +1,5 @@
 [user]
-	name = sigefried
+	name = Yuyang Huang
 	email = sigefriedhyy@gmail.com
 [core]
 	editor = vim
@@ -10,3 +10,5 @@
 	smudge = git-media-smudge %f
 [push]
 	default = simple
+[credential]
+	helper = store
