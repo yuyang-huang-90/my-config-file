@@ -14,5 +14,6 @@ then
   cargo install tokei
   cargo install procs
   cargo install ripgrep
+  cargo install fd-find
 fi
 

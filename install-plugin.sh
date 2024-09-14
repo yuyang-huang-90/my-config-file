@@ -48,7 +48,6 @@ if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
 then
   echo "System is Mac..."
   brew install tree
-  brew install fd
   brew install nnn
   brew install htop
   brew install mtr
@@ -64,7 +63,6 @@ else
   sudo apt install mtr
   sudo apt install silversearcher-ag
   sudo apt install ncdu
-  sudo apt install fd-find
   sudo apt install ranger
   sudo apt install curl
   sudo apt install cmake

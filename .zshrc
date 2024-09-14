@@ -67,3 +67,7 @@ precmd() {
     vcs_info
 }
 RPROMPT=\$vcs_info_msg_0_
+
+# direnv and codex
+eval "$(direnv hook zsh)"
+eval "$(codex configure zsh)"
