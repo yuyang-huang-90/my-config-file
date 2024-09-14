@@ -66,6 +66,9 @@ else
   sudo apt install ncdu
   sudo apt install fd-find
   sudo apt install ranger
+  sudo apt install curl
+  sudo apt install cmake
+  sudo apt install python3-full
 fi
 
 echo "full install complete"
