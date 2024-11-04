@@ -46,6 +46,12 @@ if [ -f "$HOME/.zsh_aliases" ]; then
   source ~/.zsh_aliases
 fi
 
+# HERP
+eval "$(direnv hook zsh)"
+eval "$(codex configure zsh)"
+#export FPATH="~/.nix-profile/share/zsh/site-functions/:$FPATH"
+# HERP end
+
 #PROMPT
 PROMPT="
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
@@ -67,3 +73,17 @@ precmd() {
     vcs_info
 }
 RPROMPT=\$vcs_info_msg_0_
+
+function validate_tf() {
+  for dir in $(find . -type d); do
+  # Check if the directory contains any .tf files
+    if ls $dir/*.tf >/dev/null 2>&1; then
+      echo "Validating $dir"
+      (
+        cd $dir
+        terraform init -backend=false >/dev/null 2>&1  # Initialize the directory without backend
+        terraform validate
+      )
+    fi
+  done
+}
