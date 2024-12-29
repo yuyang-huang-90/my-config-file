@@ -18,6 +18,16 @@ if [ $# -eq 1 ]; then
   echo "target dir is ${TARGET_DIR}"
 fi
 
+if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
+then
+  echo "System is Mac..."
+else
+  echo "System is Linux..."
+  sudo apt install curl
+  sudo apt install cmake
+  sudo apt install git
+fi
+
 # setup oh-my-zsh
 if  [ ! -e ${TARGET_DIR}/.oh-my-zsh ]
 then
