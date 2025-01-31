@@ -47,8 +47,15 @@ if [ -f "$HOME/.zsh_aliases" ]; then
 fi
 
 # HERP
-eval "$(direnv hook zsh)"
-eval "$(codex configure zsh)"
+if command -v direnv &>/dev/null; then
+  echo "direnv loading..."
+  eval "$(direnv hook zsh)"
+fi
+
+if command -v codex &>/dev/null; then
+  echo "codex loading..."
+  eval "$(codex configure zsh)"
+fi
 #export FPATH="~/.nix-profile/share/zsh/site-functions/:$FPATH"
 # HERP end
 
