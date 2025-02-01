@@ -264,6 +264,8 @@ if VIMCONFIG_DIR == ''
     let VIMCONFIG_DIR = $HOME."/.vim/conf"
 endif
 
+set clipboard=unnamedplus
+
 " exec ':so ' . VIMCONFIG_DIR . '/fuf.vim'
 exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
 colorscheme vividchalk
