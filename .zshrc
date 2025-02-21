@@ -81,6 +81,12 @@ precmd() {
 }
 RPROMPT=\$vcs_info_msg_0_
 
+function gdsi() {
+  local commit=${1:-HEAD}
+
+  git icdiff "$commit~1" "$commit"
+}
+
 function validate_tf() {
   for dir in $(find . -type d); do
   # Check if the directory contains any .tf files

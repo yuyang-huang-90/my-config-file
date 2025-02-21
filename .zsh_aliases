@@ -43,3 +43,4 @@ alias nvimf='nvim $(fzf)'
 
 #git
 alias gco='git checkout $(git branch | fzf)'
+alias gdi='git icdiff'
