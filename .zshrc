@@ -46,19 +46,6 @@ if [ -f "$HOME/.zsh_aliases" ]; then
   source ~/.zsh_aliases
 fi
 
-# HERP
-if command -v direnv &>/dev/null; then
-  echo "direnv loading..."
-  eval "$(direnv hook zsh)"
-fi
-
-if command -v codex &>/dev/null; then
-  echo "codex loading..."
-  eval "$(codex configure zsh)"
-fi
-#export FPATH="~/.nix-profile/share/zsh/site-functions/:$FPATH"
-# HERP end
-
 #PROMPT
 PROMPT="
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
