@@ -50,7 +50,7 @@ then
   brew install tree
   brew install fd
   brew install nnn
-  brew install htop
+  brew install btop
   brew install mtr
   brew install ncdu
   brew install ag
@@ -59,7 +59,7 @@ else
   echo "System is Linux..."
   sudo apt install tree
   sudo apt install nnn
-  sudo apt install htop
+  sudo apt install btop
   sudo apt install pydf
   sudo apt install mtr
   sudo apt install silversearcher-ag
