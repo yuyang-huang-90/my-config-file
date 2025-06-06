@@ -87,3 +87,20 @@ function validate_tf() {
     fi
   done
 }
+
+function ai_commit() {
+  # Check if a commit message argument is provided
+  if [ -z "$1" ]; then
+    echo "Usage: $0 <commit_message_text>"
+    exit 1
+  fi
+  # Construct the prompt using a here-string for clarity and proper handling
+  # of newlines and the $1 variable.
+  # Backticks (```) are escaped to be passed literally to clippy.
+  clippy ask "Your task is to proofread and update the commit message delimited by triple backticks.
+You must first summarize the message in a single sentence which is less than 60 characters, then followed by the elaborated description. The commit message is publicly visible to make it accurate and concise.
+I need the response in a format I can directly paste to the git commit message.
+\`\`\`
+$1
+\`\`\`"
+}
