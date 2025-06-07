@@ -33,9 +33,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # some more alias to avoid making mistake
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
 alias c='clear'
 
 # nvim alias

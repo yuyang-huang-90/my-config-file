@@ -24,11 +24,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# some more alias to avoid making mistake
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
