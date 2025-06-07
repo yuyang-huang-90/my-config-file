@@ -92,7 +92,7 @@ function ai_commit() {
   # Check if a commit message argument is provided
   if [ -z "$1" ]; then
     echo "Usage: $0 <commit_message_text>"
-    exit 1
+    return
   fi
   # Construct the prompt using a here-string for clarity and proper handling
   # of newlines and the $1 variable.
