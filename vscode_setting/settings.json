@@ -1,0 +1,12 @@
+{
+    "window.commandCenter": true,
+    "editor.fontSize": 18,
+    "window.zoomLevel": 1.5,
+    "vim.handleKeys": {
+        "<C-o>": false,
+        "<C-f>": false,
+        "<C-h>": false,
+        "<C-g>": false,
+        "<C-p>": false,
+    }
+}
