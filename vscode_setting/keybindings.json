@@ -29,7 +29,7 @@
         "when": "inQuickOpen && inRecentFilesPicker"
     },
     {
-        "key": "ctrl+shift+r",
+        "key": "ctrl+shift+f",
         "command": "workbench.action.quickOpen"
     },
     {
