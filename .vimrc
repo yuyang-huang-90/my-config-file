@@ -194,7 +194,7 @@ if isdirectory(expand('~/.vim/plugged'))
   Plug 'Yggdroot/indentLine'
   Plug 'airblade/vim-rooter'
   Plug 'tpope/vim-fugitive'
-  Plug 'Valloric/YouCompleteMe'
+  Plug 'ycm-core/YouCompleteMe'
   Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
   Plug 'lervag/vimtex'
   Plug 'google/vim-maktaba'
@@ -205,6 +205,7 @@ if isdirectory(expand('~/.vim/plugged'))
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
   Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'github/copilot.vim'
 
   call plug#end()
 
