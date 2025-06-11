@@ -29,7 +29,7 @@
         "when": "inQuickOpen && inRecentFilesPicker"
     },
     {
-        "key": "ctrl+shift+f",
+        "key": "ctrl+p",
         "command": "workbench.action.quickOpen"
     },
     {
@@ -42,11 +42,15 @@
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+h",
+        "key": "ctrl+alt+f",
         "command": "workbench.action.findInFiles"
     },
     {
         "key": "ctrl+shift+f",
         "command": "-workbench.action.findInFiles"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "editor.action.startFindReplaceAction"
     }
 ]
