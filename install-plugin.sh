@@ -19,31 +19,6 @@ then
   ~/.fzf/install
 fi
 
-# install enhancd replacement for cd
-if [ ! -e ~/bin/enhancd ]
-then
-  git clone https://github.com/b4b4r07/enhancd ~/bin/enhancd
-fi
-
-# zsh auto suggestion
-if [ ! -e ~/.zsh/zsh-autosuggestions ]
-then
-  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-fi
-
-
-# zsh-completions plugin
-if [ ! -e ~/.oh-my-zsh/custom/plugins/zsh-completions ]
-then
-  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-fi
-
-# zsh-syntax-highlight plugin
-if [ ! -e ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]
-then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-fi
-
 if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
 then
   echo "System is Mac..."

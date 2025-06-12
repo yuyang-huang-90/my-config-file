@@ -28,11 +28,10 @@ else
   sudo apt install git
 fi
 
-# setup oh-my-zsh
-if  [ ! -e ${TARGET_DIR}/.oh-my-zsh ]
+# setup zinit
+if  [ ! -e ${TARGET_DIR}/.zinit ]
 then
-  echo "install oh my zsh"
-  git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+  echo "install zinit"
   mkdir ~/.zinit
   git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
 else
@@ -102,6 +101,5 @@ ln -sfn $base/init.lua ${TARGET_DIR}/.config/nvim/init.lua
 #   echo "vimplug installed"
 # fi
 # fi
-
 
 echo "done!"
