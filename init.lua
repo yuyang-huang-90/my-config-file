@@ -90,11 +90,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     {
-      'tpope/vim-vividchalk',
+      "folke/tokyonight.nvim",
       lazy = false,
       priority = 1000,
       config = function()
-        vim.cmd.colorscheme 'vividchalk'
+        vim.cmd.colorscheme("tokyonight")
       end,
     },
     { 'tpope/vim-surround' },
@@ -103,17 +103,46 @@ require("lazy").setup({
     { 'windwp/nvim-autopairs', event = "InsertEnter", opts = {} },
     { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
     { 'echasnovski/mini.trailspace', version = '*', opts = {} },
-    -- fzf
-    { 'junegunn/fzf', dir = '~/.fzf', build = './install --all' },
+    -- telescope
     {
-      'junegunn/fzf.vim',
-      dependencies = { 'junegunn/fzf' },
+      'nvim-telescope/telescope.nvim',
+      tag = '0.1.8',
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        {
+          'nvim-telescope/telescope-fzf-native.nvim',
+          build = 'make',
+          config = function()
+            require('telescope').load_extension('fzf')
+          end,
+        },
+      },
       config = function()
-        map('n', '<Leader>f', ':FZF<CR>', { desc = 'FZF Find File' })
-        map('n', '<Leader>l', ':Lines<CR>', { desc = 'FZF Lines' })
-        map('n', '<Leader>b', ':Buffers<CR>', { desc = 'FZF Buffers' })
-        map('n', '<Leader>a', ':Ag<CR>', { desc = 'FZF Ag Search' })
-        map('n', '<Leader>r', ':Rg<CR>', { desc = 'FZF Ripgrep Search' })
+        local telescope = require('telescope')
+        local builtin = require('telescope.builtin')
+        telescope.setup({
+          defaults = {
+            sorting_strategy = 'ascending',
+            layout_config = {
+              horizontal = { preview_width = 0.5 },
+            },
+            winblend = 0,
+          },
+          extensions = {
+            fzf = {
+              fuzzy = true,
+              override_generic_sorter = true,
+              override_file_sorter = true,
+              case_mode = 'smart_case',
+            },
+          },
+        })
+
+        -- Mappings
+        vim.keymap.set('n', '<Leader>f', builtin.find_files, { desc = 'Telescope Find Files' })
+        vim.keymap.set('n', '<Leader>r', builtin.live_grep, { desc = 'Telescope Live Grep' })
+        vim.keymap.set('n', '<Leader>b', builtin.buffers, { desc = 'Telescope Buffers' })
+        vim.keymap.set('n', '<Leader>l', builtin.current_buffer_fuzzy_find, { desc = 'Telescope Buffer Fuzzy Search' })
       end,
     },
     --- nvm tree
@@ -153,12 +182,6 @@ require("lazy").setup({
       end,
     },
     -- completion
-    -- youcompleteme(not used anymore, but kept for reference)
-    -- {
-    --   'ycm-core/YouCompleteMe',
-    --   build = './install.py',
-    -- },
-    -- { 'rdnetto/YCM-Generator', branch = 'stable' },
     -- Core LSP plugins
     { "neovim/nvim-lspconfig" },
     {
