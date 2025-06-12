@@ -1,4 +1,5 @@
 -- BASIC CONFIG
+--
 vim.opt.backspace = 'indent,eol,start' -- allow backspacing over everything in insert mode
 vim.opt.clipboard = 'unnamedplus'      -- use system clipboard
 vim.opt.mouse = 'a'
@@ -135,10 +136,10 @@ require("lazy").setup({
             group_empty = true,
             icons = {
               show = {
-                git = false,
-                folder = false,
-                file = false,
-                folder_arrow = false,
+                git = true,
+                folder = true,
+                file = true,
+                folder_arrow = true,
               },
             },
           },
@@ -152,11 +153,61 @@ require("lazy").setup({
       end,
     },
     -- completion
+    -- youcompleteme(not used anymore, but kept for reference)
+    -- {
+    --   'ycm-core/YouCompleteMe',
+    --   build = './install.py',
+    -- },
+    -- { 'rdnetto/YCM-Generator', branch = 'stable' },
+    -- Core LSP plugins
+    { "neovim/nvim-lspconfig" },
     {
-      'ycm-core/YouCompleteMe',
-      build = './install.py',
+      "mason-org/mason-lspconfig.nvim",
+      dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+      },
+      config = function()
+        local mason_lspconfig = require("mason-lspconfig")
+        mason_lspconfig.setup({
+          ensure_installed = { "pyright", "clangd", 'ts_ls' },
+        })
+      end,
     },
-    { 'rdnetto/YCM-Generator', branch = 'stable' },
+    {
+      "hrsh7th/nvim-cmp",
+      dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+      },
+      config = function()
+        local cmp = require("cmp")
+        local luasnip = require("luasnip")
+
+        cmp.setup({
+          snippet = {
+            expand = function(args)
+              luasnip.lsp_expand(args.body)
+            end,
+          },
+          mapping = cmp.mapping.preset.insert({
+            ["<C-Space>"] = cmp.mapping.complete(),
+            ["<CR>"] = cmp.mapping.confirm({ select = true }),
+            ["<Tab>"] = cmp.mapping.select_next_item(),
+            ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+          }),
+          sources = cmp.config.sources({
+            { name = "nvim_lsp" },
+            { name = "luasnip" },
+            { name = "buffer" },
+            { name = "path" },
+          }),
+        })
+      end,
+    },
     {
       'github/copilot.vim',
       config = function()
