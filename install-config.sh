@@ -71,11 +71,11 @@ echo "setup neovim config"
 
 if [ ! -d ${TARGET_DIR}/.config/nvim ]
 then
-  echo "create dir .vim in target dir"
+  echo "create dir ~/.confg/nvim in target dir"
   mkdir -p ${TARGET_DIR}/.config/nvim
 fi
 
-ln -sfn $base/init.lua ${TARGET_DIR}/.config/nvim/
+ln -sfn $base/init.lua ${TARGET_DIR}/.config/nvim/init.lua
 #ln ${LN_OPT} $base/conf ${TARGET_DIR}/.config/nvim
 #ln ${LN_OPT} $base/dict  ${TARGET_DIR}/.config/nvim
 #ln ${LN_OPT} $base/colors   ${TARGET_DIR}/.config/nvim
