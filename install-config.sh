@@ -37,12 +37,6 @@ else
   echo "oh my zsh already installed"
 fi
 
-if [ ! -d ${TARGET_DIR}/.vim ]
-then
-  echo "create dir .vim in target dir"
-  mkdir ${TARGET_DIR}/.vim
-fi
-
 if [ ! -d ${TARGET_DIR}/.config ]
 then
   echo "create dir .config in target dir"
@@ -63,7 +57,6 @@ echo "link dot file..."
 ln ${LN_OPT} $base/.zshrc ${TARGET_DIR}/
 ln ${LN_OPT}  $base/.zprofile ${TARGET_DIR}/
 ln ${LN_OPT}  $base/.zsh_aliases ${TARGET_DIR}/
-ln ${LN_OPT} $base/.vimrc ${TARGET_DIR}/
 ln ${LN_OPT} $base/.emacs ${TARGET_DIR}/
 ln ${LN_OPT} $base/.hgrc ${TARGET_DIR}/
 #ln ${LN_OPT} $base/.bashrc ${TARGET_DIR}/
@@ -72,26 +65,41 @@ ln ${LN_OPT} $base/.tmux.conf ${TARGET_DIR}/
 ln ${LN_OPT} $base/.wezterm.lua ${TARGET_DIR}/
 
 echo "link dir..."
-ln ${LN_OPT} $base/conf ${TARGET_DIR}/.vim/
-ln ${LN_OPT} $base/dict  ${TARGET_DIR}/.vim/
-ln ${LN_OPT} $base/colors   ${TARGET_DIR}/.vim/
 ln ${LN_OPT} $base/zsh-plugin   ${TARGET_DIR}/
-
-# vim plug
-if  [ ! -f ${TARGET_DIR}/.vim/autoload/plug.vim ]
-then
-  echo "install vimplug"
-  curl -fLo ${TARGET_DIR}/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  mkdir -p ${TARGET_DIR}/.vim/plugged
-else
-  echo "vimplug installed"
-fi
 
 echo "setup neovim config"
 
-ln -sfn ${TARGET_DIR}/.vim ${TARGET_DIR}/.config/nvim
-ln -sfn ${TARGET_DIR}/.vimrc ${TARGET_DIR}/.vim/init.vim
+if [ ! -d ${TARGET_DIR}/.config/nvim ]
+then
+  echo "create dir .vim in target dir"
+  mkdir -p ${TARGET_DIR}/.config/nvim
+fi
+
+ln -sfn $base/init.lua ${TARGET_DIR}/.config/nvim/
+#ln ${LN_OPT} $base/conf ${TARGET_DIR}/.config/nvim
+#ln ${LN_OPT} $base/dict  ${TARGET_DIR}/.config/nvim
+#ln ${LN_OPT} $base/colors   ${TARGET_DIR}/.config/nvim
+
+# echo "setup vim config"
+# if [ ! -d ${TARGET_DIR}/.vim ]
+# then
+#   echo "create dir .vim in target dir"
+#   mkdir ${TARGET_DIR}/.vim
+#ln ${LN_OPT} $base/conf ${TARGET_DIR}/.vim/
+#ln ${LN_OPT} $base/dict  ${TARGET_DIR}/.vim/
+#ln ${LN_OPT} $base/colors   ${TARGET_DIR}/.vim/
+#ln ${LN_OPT} $base/.vimrc ${TARGET_DIR}/
+# vim plug
+# if  [ ! -f ${TARGET_DIR}/.vim/autoload/plug.vim ]
+# then
+#   echo "install vimplug"
+#   curl -fLo ${TARGET_DIR}/.vim/autoload/plug.vim --create-dirs \
+#     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#   mkdir -p ${TARGET_DIR}/.vim/plugged
+# else
+#   echo "vimplug installed"
+# fi
+# fi
 
 
 echo "done!"
