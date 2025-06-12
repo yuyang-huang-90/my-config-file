@@ -20,11 +20,11 @@ zinit light romkatv/powerlevel10k
 
 # Essentials
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
 
 # Git utilities
-# # Git plugin from oh-my-zsh
+# Git plugin
 zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
 # Extract plugin
 zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh
@@ -49,13 +49,11 @@ setopt no_beep
 setopt autocd
 setopt correct
 
-# Use colors
-autoload -Uz colors && colors
-
-# Completion cache
-zstyle ':completion:*' rehash true
-ZSH_CACHE_DIR="$HOME/.zsh/cache"
-mkdir -p "$ZSH_CACHE_DIR"
+# history settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt share_history
 
 # -------------------------------
 # Aliases and custom functions
