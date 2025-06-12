@@ -5,5 +5,6 @@ return {
   font_size = 14.0,
   color_scheme = 'Dracula',
   default_cursor_style = "BlinkingBar",
+  canonicalize_pasted_newlines = "None",
   use_ime = true,
 }

@@ -36,6 +36,7 @@ alias egrep='egrep --color=auto'
 alias c='clear'
 
 # nvim alias
+# alias nvim='vim'
 alias nvimf='nvim $(fzf)'
 
 #git
