@@ -22,8 +22,8 @@ zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
 
-# Git utilities
 # Git plugin
 zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
 # Extract plugin
@@ -37,10 +37,9 @@ export FZF_DEFAULT_OPTS="--reverse --height 40% \
   --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229\
   --color info:150,prompt:110,spinner:150,pointer:167,marker:174"
 
-# Zoxide (enhanced cd replacement)
+# Zoxide
 zinit light ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
-alias ecd='zoxide cd'
 
 # -------------------------------
 # Options
