@@ -1,87 +1,80 @@
-export ZSH=$HOME/.oh-my-zsh
-
-ZSH_THEME="ys"
-
-CASE_SENSITIVE="true"
-DISABLE_AUTO_UPDATE="true"
-COMPLETION_WAITING_DOTS="true"
-
-plugins=(git tmux zsh-completions zsh-syntax-highlighting extract)
-
-source $ZSH/oh-my-zsh.sh
-
-## audocomplete
-autoload -U compinit promptinit
-compinit
-promptinit
-
-## using colors
-autoload -Uz colors
-colors
-
-# fzf
-if [ -f ~/.fzf.zsh ]
-then
-  source ~/.fzf.zsh
-  export FZF_DEFAULT_OPTS="--reverse --height 40% \
-    --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229\
-    --color info:150,prompt:110,spinner:150,pointer:167,marker:174"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# enhanced cd
-if [ -f ~/bin/enhancd/init.sh ]
-then
-  export ENHANCD_COMMAND=ecd
-  source ~/bin/enhancd/init.sh
-fi
+# -------------------------------
+# Zinit setup
+# -------------------------------
+export ZINIT_HOME="$HOME/.zinit"
+source "$ZINIT_HOME/bin/zinit.zsh"
 
-# auto suggestion
-if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]
-then
-  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+zinit light romkatv/powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#source alias
-if [ -f "$HOME/.zsh_aliases" ]; then
-  source ~/.zsh_aliases
-fi
+# -------------------------------
+# Plugin management
+# -------------------------------
 
-#PROMPT
-PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
-%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
-%{$fg[white]%}@ \
-%{$fg[green]%}%m \
-%{$fg[white]%}in \
-%{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%}\
- \
-%{$fg[white]%}[%*] $exit_code
-%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
-#RPROMPT
-autoload -Uz vcs_info
+# Essentials
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats "%{$fg[cyan]%}[%b]%{$reset_color%}(%{$fg[green]%}%c%{$reset_color%}%{$fg[red]%}%u%{$reset_color%})"
-precmd() {
-    vcs_info
-}
-RPROMPT=\$vcs_info_msg_0_
+# Git utilities
+# # Git plugin from oh-my-zsh
+zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
+# Extract plugin
+zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh
+# Tmux plugin
+zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/tmux/tmux.plugin.zsh
+
+# FZF integration (manual, outside oh-my-zsh plugin system)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="--reverse --height 40% \
+  --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229\
+  --color info:150,prompt:110,spinner:150,pointer:167,marker:174"
+
+# Zoxide (enhanced cd replacement)
+zinit light ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
+alias ecd='zoxide cd'
+
+# -------------------------------
+# Options
+# -------------------------------
+setopt no_beep
+setopt autocd
+setopt correct
+
+# Use colors
+autoload -Uz colors && colors
+
+# Completion cache
+zstyle ':completion:*' rehash true
+ZSH_CACHE_DIR="$HOME/.zsh/cache"
+mkdir -p "$ZSH_CACHE_DIR"
+
+# -------------------------------
+# Aliases and custom functions
+# -------------------------------
+
+[ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
 
 function gdsi() {
   local commit=${1:-HEAD}
-
   git icdiff "$commit~1" "$commit"
 }
 
 function validate_tf() {
   for dir in $(find . -type d); do
-  # Check if the directory contains any .tf files
     if ls $dir/*.tf >/dev/null 2>&1; then
       echo "Validating $dir"
       (
         cd $dir
-        terraform init -backend=false >/dev/null 2>&1  # Initialize the directory without backend
+        terraform init -backend=false >/dev/null 2>&1
         terraform validate
       )
     fi
@@ -103,10 +96,10 @@ $1
 
 function ai_japanese() {
   if [ -z "$1" ]; then
-    echo "Usage: $0 <commit_message_text>"
-    exit 1
+    echo "Usage: $0 <text_to_translate>"
+    return 1
   fi
-  clippy ask "Your task is to translate the following message delimited by triple backticks in to japanese. Make it professional but not too formal.
+  clippy ask "Your task is to translate the following message delimited by triple backticks into Japanese. Make it professional but not too formal.
 \`\`\`
 $1
 \`\`\`"

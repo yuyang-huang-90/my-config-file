@@ -33,6 +33,8 @@ if  [ ! -e ${TARGET_DIR}/.oh-my-zsh ]
 then
   echo "install oh my zsh"
   git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+  mkdir ~/.zinit
+  git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
 else
   echo "oh my zsh already installed"
 fi
