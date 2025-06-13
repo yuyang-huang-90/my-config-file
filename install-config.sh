@@ -1,7 +1,7 @@
 #! /bin/bash
 #
 # install.sh
-# Copyright (C) 2014 sigefried <sigefriedhyy@gmail.com>
+# Copyright (C) 2025 sigefried <sigefriedhyy@gmail.com>
 #
 # Distributed under terms of the MIT license.
 #
