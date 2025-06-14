@@ -54,6 +54,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt share_history
 
+# key binding
+setopt ignore_eof
+
 # -------------------------------
 # Aliases and custom functions
 # -------------------------------
@@ -100,4 +103,8 @@ function ai_japanese() {
 \`\`\`
 $1
 \`\`\`"
+}
+
+function git_current_branch() {
+  git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
