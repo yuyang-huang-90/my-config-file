@@ -9,5 +9,6 @@
         "<C-g>": false,
         "<C-p>": false,
     },
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+    "git.blame.statusBarItem.enabled": false
 }
