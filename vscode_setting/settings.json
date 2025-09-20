@@ -8,5 +8,6 @@
         "<C-h>": false,
         "<C-g>": false,
         "<C-p>": false,
-    }
+    },
+    "editor.renderWhitespace": "all"
 }
