@@ -42,10 +42,30 @@ vim.opt.scrolloff = 8
 
 -- BEHAVIOR
 vim.opt.autowrite = true   -- automatically save before commands like :next
+vim.opt.autoread = true   -- automatically refresh the contents if file changed
 vim.opt.backup = false    -- no backup files
 vim.opt.updatetime = 300   -- faster update time for plugins like git-gutter
 vim.opt.timeoutlen = 500   -- time to wait for a mapped sequence to complete
 vim.opt.ttimeoutlen = 100  -- time to wait for a key code sequence
+vim.opt.list = true -- enable list mode
+
+-- Make autoread more reliable by checking for file changes on various events
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  pattern = '*',
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd('checktime')
+    end
+  end,
+})
+
+-- Notify when file changes are detected
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  pattern = '*',
+  callback = function()
+    vim.notify('File changed on disk. Buffer reloaded.', vim.log.levels.WARN)
+  end,
+})
 
 -- =============================================================================
 -- || KEYMAPS
