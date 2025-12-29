@@ -123,6 +123,7 @@ require("lazy").setup({
     { 'windwp/nvim-autopairs', event = "InsertEnter", opts = {} },
     { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
     { 'echasnovski/mini.trailspace', version = '*', opts = {} },
+    { "nmac427/guess-indent.nvim", opts = {} },
     -- telescope
     {
       'nvim-telescope/telescope.nvim',
