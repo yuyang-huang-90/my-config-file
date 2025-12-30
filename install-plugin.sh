@@ -75,8 +75,6 @@ install_cargo_component bottom btm
 install_cargo_component fd-find fd
 # dust: A more intuitive version of 'du'. Example: dust
 install_cargo_component du-dust dust
-# broot: A better way to navigate directories and see tree views. Example: br
-install_cargo_component broot
 # trippy: A network diagnostic tool. Example: trip google.com
 install_cargo_component trippy trip
 # dfrs: A modern replacement for 'df'. Example: dfrs
