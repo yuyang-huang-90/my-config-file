@@ -108,3 +108,4 @@ install_cargo_component dfrs
 install_cargo_component tealdeer tldr
 
 echo "full install complete"
+
