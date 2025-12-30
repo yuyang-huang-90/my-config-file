@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# install.sh
+# install-config.sh
 # Copyright (C) 2025 sigefried <sigefriedhyy@gmail.com>
 #
 # Distributed under terms of the MIT license.
@@ -12,97 +12,63 @@ if [ $# -ge 2 ]; then
 fi
 
 TARGET_DIR=~
-
 if [ $# -eq 1 ]; then
   TARGET_DIR=${1%"/"}
-  echo "target dir is ${TARGET_DIR}"
+  echo "Target directory is ${TARGET_DIR}"
 fi
 
+# Ensure base tools for bootstrapping
 if [[ "$(uname)" == "Darwin" ]]; then
   echo "System is Mac..."
   if ! command -v brew &> /dev/null; then
     echo "Homebrew not found. Please install Homebrew first."
     exit 1
   fi
-  brew install curl cmake git
+  brew install curl git icdiff cmake jq tree tmux htop unzip wget vim zsh
 else
   echo "System is Linux..."
-  sudo apt install curl
-  sudo apt install cmake
-  sudo apt install git
+  sudo apt update
+  sudo apt install -y curl git build-essential icdiff cmake jq tree tmux htop unzip wget vim zsh
 fi
 
-# setup zinit
-if  [ ! -e ${TARGET_DIR}/.zinit ]
-then
-  echo "install zinit"
-  mkdir -p ${TARGET_DIR}/.zinit
-  git clone https://github.com/zdharma-continuum/zinit.git ${TARGET_DIR}/.zinit/bin
+# Setup zinit
+if [ ! -e "${TARGET_DIR}/.zinit" ]; then
+  echo "Installing zinit..."
+  mkdir -p "${TARGET_DIR}/.zinit"
+  git clone https://github.com/zdharma-continuum/zinit.git "${TARGET_DIR}/.zinit/bin"
 else
-  echo "zinit already installed"
+  echo "zinit already installed."
 fi
 
-if [ ! -d ${TARGET_DIR}/.config ]
-then
-  echo "create dir .config in target dir"
-  mkdir ${TARGET_DIR}/.config
+# Create .config directory
+if [ ! -d "${TARGET_DIR}/.config" ]; then
+  echo "Creating ~/.config directory..."
+  mkdir -p "${TARGET_DIR}/.config"
 fi
 
 base="$(pwd)"
-
-
 LN_OPT="-sfn"
 if [[ "$(uname)" == "Darwin" ]]; then
   LN_OPT="-sfnh"
 fi
 
-#link dot file
-echo "link dot file..."
-ln ${LN_OPT} $base/.zshrc ${TARGET_DIR}/
-ln ${LN_OPT}  $base/.zprofile ${TARGET_DIR}/
-ln ${LN_OPT}  $base/.zsh_aliases ${TARGET_DIR}/
-ln ${LN_OPT} $base/.emacs ${TARGET_DIR}/
-ln ${LN_OPT} $base/.hgrc ${TARGET_DIR}/
-#ln ${LN_OPT} $base/.bashrc ${TARGET_DIR}/
-ln ${LN_OPT} $base/.gitconfig ${TARGET_DIR}/
-ln ${LN_OPT} $base/.tmux.conf ${TARGET_DIR}/
-ln ${LN_OPT} $base/.wezterm.lua ${TARGET_DIR}/
+# Link dotfiles
+echo "Linking dotfiles..."
+for file in .zshrc .zprofile .zsh_aliases .emacs .hgrc .gitconfig .tmux.conf .wezterm.lua; do
+  if [ -e "$base/$file" ]; then
+    ln ${LN_OPT} "$base/$file" "${TARGET_DIR}/"
+  fi
+done
 
-echo "link dir..."
-ln ${LN_OPT} $base/zsh-plugin   ${TARGET_DIR}/
+echo "Linking directories..."
+ln ${LN_OPT} "$base/zsh-plugin" "${TARGET_DIR}/"
 
-echo "setup neovim config"
-
-if [ ! -d ${TARGET_DIR}/.config/nvim ]
-then
-  echo "create dir ~/.confg/nvim in target dir"
-  mkdir -p ${TARGET_DIR}/.config/nvim
+# Setup Neovim config
+echo "Setting up Neovim configuration..."
+if [ ! -d "${TARGET_DIR}/.config/nvim" ]; then
+  mkdir -p "${TARGET_DIR}/.config/nvim"
 fi
+ln ${LN_OPT} "$base/init.lua" "${TARGET_DIR}/.config/nvim/init.lua"
 
-ln -sfn $base/init.lua ${TARGET_DIR}/.config/nvim/init.lua
-#ln ${LN_OPT} $base/conf ${TARGET_DIR}/.config/nvim
-#ln ${LN_OPT} $base/dict  ${TARGET_DIR}/.config/nvim
-#ln ${LN_OPT} $base/colors   ${TARGET_DIR}/.config/nvim
-
-# echo "setup vim config"
-# if [ ! -d ${TARGET_DIR}/.vim ]
-# then
-#   echo "create dir .vim in target dir"
-#   mkdir ${TARGET_DIR}/.vim
-#ln ${LN_OPT} $base/conf ${TARGET_DIR}/.vim/
-#ln ${LN_OPT} $base/dict  ${TARGET_DIR}/.vim/
-#ln ${LN_OPT} $base/colors   ${TARGET_DIR}/.vim/
-#ln ${LN_OPT} $base/.vimrc ${TARGET_DIR}/
-# vim plug
-# if  [ ! -f ${TARGET_DIR}/.vim/autoload/plug.vim ]
-# then
-#   echo "install vimplug"
-#   curl -fLo ${TARGET_DIR}/.vim/autoload/plug.vim --create-dirs \
-#     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#   mkdir -p ${TARGET_DIR}/.vim/plugged
-# else
-#   echo "vimplug installed"
-# fi
-# fi
-
-echo "done!"
+echo "Configuration setup done!"
+echo "Note: Run ./install-plugin.sh to install additional tools and plugins."

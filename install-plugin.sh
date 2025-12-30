@@ -15,22 +15,6 @@ if [ "$EUID" -ne 0 ]; then
   SUDO="sudo"
 fi
 
-if [[ "$(uname)" == "Darwin" ]]; then
-  echo "System is Mac..."
-  if ! command -v brew &> /dev/null; then
-      echo "Homebrew not found. Installing..."
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
-  brew install curl git icdiff cmake jq tree tmux htop unzip wget vim zsh
-else
-  echo "System is Linux..."
-  # Update package list and install essential tools
-  if command -v apt-get &> /dev/null; then
-    $SUDO apt-get update
-    $SUDO apt-get install -y curl git build-essential icdiff cmake jq tree tmux htop unzip wget vim zsh
-  fi
-fi
-
 # install fzf
 if [ ! -e ~/.fzf ]
 then
