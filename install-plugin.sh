@@ -29,23 +29,18 @@ fi
 if [ ! -e ~/.nvm ]
 then
   echo "Installing nvm..."
-  if curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash; then
-    # Source nvm to make it available immediately
-    export NVM_DIR="$HOME/.nvm"
-    if [ -s "$NVM_DIR/nvm.sh" ]; then
-      \. "$NVM_DIR/nvm.sh"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
-      # Install latest LTS version of Node.js
-      echo "Installing Node.js LTS..."
-      nvm install --lts
-      nvm use --lts
-      nvm alias default 'lts/*'
-    else
-      echo "Error: nvm installation incomplete. Please check manually."
-    fi
-  else
-    echo "Error: Failed to download nvm installer."
-  fi
+  # Source nvm to make it available immediately
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+  # Install latest LTS version and set as default
+  echo "Installing Node.js LTS..."
+  nvm install --lts
+  nvm alias default --lts
+
+  echo "Node.js $(node --version) installed successfully"
 else
   echo "nvm already installed."
 fi

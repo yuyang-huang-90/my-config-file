@@ -114,18 +114,5 @@ function git_current_branch() {
 # NVM (Node Version Manager)
 # -------------------------------
 export NVM_DIR="$HOME/.nvm"
-
-# Add node to PATH directly (fast, no loading nvm itself)
-if [ -d "$NVM_DIR/versions/node" ]; then
-  NODE_VERSION=$(ls -t "$NVM_DIR/versions/node" 2>/dev/null | head -1)
-  if [ -n "$NODE_VERSION" ]; then
-    export PATH="$NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH"
-  fi
-fi
-
-# Load nvm only when the nvm command is used (lazy loading)
-nvm() {
-  unset -f nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  nvm "$@"
-}
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
