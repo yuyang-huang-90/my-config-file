@@ -21,15 +21,15 @@ if [[ "$(uname)" == "Darwin" ]]; then
       echo "Homebrew not found. Installing..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
-  brew install curl git
+  brew install curl git icdiff cmake jq tree tmux htop unzip wget vim zsh
 else
   echo "System is Linux..."
   # Update package list and install essential tools
   if command -v apt-get &> /dev/null; then
     $SUDO apt-get update
-    $SUDO apt-get install -y curl git build-essential
+    $SUDO apt-get install -y curl git build-essential icdiff cmake jq tree tmux htop unzip wget vim zsh
   fi
-}
+fi
 
 # install fzf
 if [ ! -e ~/.fzf ]
@@ -73,17 +73,31 @@ install_cargo_component() {
   fi
 }
 
+# bat: A cat(1) clone with syntax highlighting and Git integration. Example: bat <file>
 install_cargo_component bat
+# eza: A modern, feature-rich replacement for 'ls'. Example: eza -la
 install_cargo_component eza
+# tokei: A program that displays statistics about your code. Example: tokei .
 install_cargo_component tokei
+# procs: A modern replacement for 'ps'. Example: procs <process_name>
 install_cargo_component procs
+# ripgrep (rg): An extremely fast line-oriented search tool. Example: rg <pattern>
 install_cargo_component ripgrep rg
+# zoxide: A smarter 'cd' command that learns your habits. Example: z <directory>
 install_cargo_component zoxide
+# bottom (btm): A customizable system monitor. Example: btm
 install_cargo_component bottom btm
+# fd: A simple, fast alternative to 'find'. Example: fd <pattern>
 install_cargo_component fd-find fd
+# dust: A more intuitive version of 'du'. Example: dust
 install_cargo_component du-dust dust
-install_cargo_component yazi-fm yazi
+# broot: A better way to navigate directories and see tree views. Example: br
+install_cargo_component broot
+# trippy: A network diagnostic tool. Example: trip google.com
 install_cargo_component trippy trip
+# dfrs: A modern replacement for 'df'. Example: dfrs
 install_cargo_component dfrs
+# tealdeer: A fast implementation of tldr, providing simplified man pages. Example: tldr tar
+install_cargo_component tealdeer tldr
 
 echo "full install complete"
