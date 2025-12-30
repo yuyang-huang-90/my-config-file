@@ -40,7 +40,7 @@ alias c='clear'
 alias nvimf='nvim $(fzf)'
 
 # network tools
-alias trip='sudo /home/m-upc/.cargo/bin/trip'
+alias trip='sudo ${HOME}/.cargo/bin/trip'
 
 #git
 alias gco='git checkout $(git branch | fzf)'
