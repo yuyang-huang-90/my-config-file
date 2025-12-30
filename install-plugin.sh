@@ -25,6 +25,31 @@ else
   echo "fzf already installed."
 fi
 
+# install nvm (Node Version Manager)
+if [ ! -e ~/.nvm ]
+then
+  echo "Installing nvm..."
+  if curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash; then
+    # Source nvm to make it available immediately
+    export NVM_DIR="$HOME/.nvm"
+    if [ -s "$NVM_DIR/nvm.sh" ]; then
+      \. "$NVM_DIR/nvm.sh"
+
+      # Install latest LTS version of Node.js
+      echo "Installing Node.js LTS..."
+      nvm install --lts
+      nvm use --lts
+      nvm alias default 'lts/*'
+    else
+      echo "Error: nvm installation incomplete. Please check manually."
+    fi
+  else
+    echo "Error: Failed to download nvm installer."
+  fi
+else
+  echo "nvm already installed."
+fi
+
 # Check if cargo is available, install Rust if not
 if ! command -v cargo &> /dev/null; then
   echo "Rust is not installed. Installing via rustup..."
