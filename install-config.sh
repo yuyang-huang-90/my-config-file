@@ -18,9 +18,13 @@ if [ $# -eq 1 ]; then
   echo "target dir is ${TARGET_DIR}"
 fi
 
-if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
-then
+if [[ "$(uname)" == "Darwin" ]]; then
   echo "System is Mac..."
+  if ! command -v brew &> /dev/null; then
+    echo "Homebrew not found. Please install Homebrew first."
+    exit 1
+  fi
+  brew install curl cmake git
 else
   echo "System is Linux..."
   sudo apt install curl
@@ -32,10 +36,10 @@ fi
 if  [ ! -e ${TARGET_DIR}/.zinit ]
 then
   echo "install zinit"
-  mkdir ~/.zinit
-  git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
+  mkdir -p ${TARGET_DIR}/.zinit
+  git clone https://github.com/zdharma-continuum/zinit.git ${TARGET_DIR}/.zinit/bin
 else
-  echo "oh my zsh already installed"
+  echo "zinit already installed"
 fi
 
 if [ ! -d ${TARGET_DIR}/.config ]
@@ -48,8 +52,7 @@ base="$(pwd)"
 
 
 LN_OPT="-sfn"
-if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
-then
+if [[ "$(uname)" == "Darwin" ]]; then
   LN_OPT="-sfnh"
 fi
 

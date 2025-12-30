@@ -56,6 +56,7 @@ setopt share_history
 
 # key binding
 setopt ignore_eof
+bindkey -e
 
 # -------------------------------
 # Aliases and custom functions
