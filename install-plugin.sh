@@ -25,26 +25,6 @@ else
   echo "fzf already installed."
 fi
 
-# install nvm (Node Version Manager)
-if [ ! -e ~/.nvm ]
-then
-  echo "Installing nvm..."
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-
-  # Source nvm to make it available immediately
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-  # Install latest LTS version and set as default
-  echo "Installing Node.js LTS..."
-  nvm install --lts
-  nvm alias default --lts
-
-  echo "Node.js $(node --version) installed successfully"
-else
-  echo "nvm already installed."
-fi
-
 # Check if cargo is available, install Rust if not
 if ! command -v cargo &> /dev/null; then
   echo "Rust is not installed. Installing via rustup..."
@@ -76,6 +56,24 @@ install_cargo_component() {
     echo "$package ($binary) is already installed. Skipping."
   fi
 }
+
+# install fnm for node management
+install_cargo_component fnm
+
+# Configure fnm environment and install Node.js LTS if not present
+if command -v fnm &> /dev/null; then
+  # Load fnm environment
+  eval "$(fnm env use-on-cd)"
+
+  # Check if node is installed
+  if ! command -v node &> /dev/null; then
+    echo "Installing Node.js LTS via fnm..."
+    eval "$(fnm env --use-on-cd)"
+    fnm install --lts
+  else
+    echo "Node.js is already installed. Skipping."
+  fi
+fi
 
 # bat: A cat(1) clone with syntax highlighting and Git integration. Example: bat <file>
 install_cargo_component bat
