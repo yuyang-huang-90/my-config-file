@@ -1,0 +1,65 @@
+# Alacritty Configuration
+
+[window]
+opacity = 1.0
+padding = { x = 2, y = 2 }
+decorations = "full"
+dynamic_padding = false
+
+[window.dimensions]
+columns = 120
+lines = 50
+
+[font]
+# Match gnome-terminal font
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+size = 16.0
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
+
+# Enable clickable URLs (works with tmux)
+# Just Ctrl+Shift+Click to open URLs
+[hints]
+enabled = [
+  { regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001f\u007f-\u009f<>\"\\s{-}\\^⟨⟩`]+", command = "xdg-open", post_processing = true, mouse.enabled = true }
+]
+
+# One Dark color scheme
+[colors.primary]
+background = "#282c34"
+foreground = "#abb2bf"
+
+[colors.cursor]
+text = "#282c34"
+cursor = "#abb2bf"
+
+[colors.normal]
+black = "#282c34"
+red = "#e06c75"
+green = "#98c379"
+yellow = "#e5c07b"
+blue = "#61afef"
+magenta = "#c678dd"
+cyan = "#56b6c2"
+white = "#abb2bf"
+
+[colors.bright]
+black = "#5c6370"
+red = "#e06c75"
+green = "#98c379"
+yellow = "#e5c07b"
+blue = "#61afef"
+magenta = "#c678dd"
+cyan = "#56b6c2"
+white = "#ffffff"

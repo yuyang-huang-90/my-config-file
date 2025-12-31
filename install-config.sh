@@ -70,5 +70,12 @@ if [ ! -d "${TARGET_DIR}/.config/nvim" ]; then
 fi
 ln ${LN_OPT} "$base/init.lua" "${TARGET_DIR}/.config/nvim/init.lua"
 
+# Setup Alacritty config
+echo "Setting up Alacritty configuration..."
+if [ ! -d "${TARGET_DIR}/.config/alacritty" ]; then
+  mkdir -p "${TARGET_DIR}/.config/alacritty"
+fi
+ln ${LN_OPT} "$base/alacritty.toml" "${TARGET_DIR}/.config/alacritty/alacritty.toml"
+
 echo "Configuration setup done!"
 echo "Note: Run ./install-plugin.sh to install additional tools and plugins."
