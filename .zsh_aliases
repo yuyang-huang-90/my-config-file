@@ -1,4 +1,3 @@
-
 # some difference between OS X and Linux
 # for mac only
 if ls / | grep "Applications" > /dev/null # if sys is os x then change sth.
@@ -18,15 +17,33 @@ then
     alias eclimd='~/eclipse/eclimd'
     alias svim='sudo vim'
 fi
-# exa alias
+
+# eza alias
 alias e='eza'
 alias el='eza -la -g'
+alias ll='eza -la -g'
 alias ea='eza -a'
 alias l='eza'
-alias ls='ls $LS_COLOR'
-alias ll='ls $LS_COLOR -alF'
-alias la='ls $LS_COLOR -CA'
-alias l='ls $LS_COLOR -CF'
+alias ls='eza'
+
+# bat alias (better cat)
+alias cat='bat'
+
+# dust alias (better du)
+alias du='dust'
+
+# procs alias (better ps)
+alias psa='procs'
+
+# bottom alias (system monitor)
+alias top='btm'
+alias htop='btm'
+
+# dfrs alias (better df)
+alias df='dfrs'
+
+# zoxide alias (smart cd)
+alias cd='z'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
