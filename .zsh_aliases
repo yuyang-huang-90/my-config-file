@@ -27,7 +27,7 @@ alias l='eza'
 alias ls='eza'
 
 # bat alias (better cat)
-alias cat='bat'
+alias cat='bat -pp'
 
 # dust alias (better du)
 alias du='dust'
