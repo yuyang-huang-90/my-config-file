@@ -110,12 +110,5 @@ function git_current_branch() {
   git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
-# -------------------------------
-# NVM (Node Version Manager)
-# -------------------------------
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # fnm
 eval "$(fnm env --use-on-cd --shell zsh)"
