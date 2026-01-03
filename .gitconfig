@@ -3,7 +3,6 @@
 	email = sigefriedhyy@gmail.com
 [core]
 	editor = nvim
-	fsmonitor = true
 [color]
 	ui = true
 [filter "media"]
