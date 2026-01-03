@@ -95,8 +95,6 @@ install_cargo_component fd-find fd
 install_cargo_component du-dust dust
 # trippy: A network diagnostic tool. Example: trip google.com
 install_cargo_component trippy trip
-# dfrs: A modern replacement for 'df'. Example: dfrs
-install_cargo_component dfrs
 # tealdeer: A fast implementation of tldr, providing simplified man pages. Example: tldr tar
 install_cargo_component tealdeer tldr
 
