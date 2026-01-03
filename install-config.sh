@@ -28,7 +28,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
 else
   echo "System is Linux..."
   sudo apt update
-  sudo apt install -y curl git build-essential icdiff cmake jq tree tmux htop unzip wget vim zsh
+  sudo apt install -y curl git build-essential icdiff cmake jq tree tmux htop unzip wget vim zsh \
+    pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 fi
 
 # Setup zinit
@@ -76,6 +77,10 @@ if [ ! -d "${TARGET_DIR}/.config/alacritty" ]; then
   mkdir -p "${TARGET_DIR}/.config/alacritty"
 fi
 ln ${LN_OPT} "$base/alacritty.toml" "${TARGET_DIR}/.config/alacritty/alacritty.toml"
+
+# Setup Starship config
+echo "Setting up Starship configuration..."
+ln ${LN_OPT} "$base/starship.toml" "${TARGET_DIR}/.config/starship.toml"
 
 echo "Configuration setup done!"
 echo "Note: Run ./install-plugin.sh to install additional tools and plugins."
