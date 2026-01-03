@@ -40,6 +40,10 @@ symbol = " "
 [status]
 disabled = false
 
+# Show duration if > 3s (default is 2s)
+[cmd_duration]
+min_time = 3000
+
 # Show time (disabled by default)
 [time]
 disabled = false
