@@ -75,12 +75,6 @@ if command -v fnm &> /dev/null; then
   fi
 fi
 
-# starship: A minimal, blazing-fast shell prompt.
-install_cargo_component starship
-
-# alacritty: A fast, cross-platform, GPU-accelerated terminal emulator.
-install_cargo_component alacritty
-
 # bat: A cat(1) clone with syntax highlighting and Git integration. Example: bat <file>
 install_cargo_component bat
 # eza: A modern, feature-rich replacement for 'ls'. Example: eza -la
