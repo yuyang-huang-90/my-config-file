@@ -63,7 +63,7 @@ install_cargo_component fnm
 # Configure fnm environment and install Node.js LTS if not present
 if command -v fnm &> /dev/null; then
   # Load fnm environment
-  eval "$(fnm env use-on-cd)"
+  eval "$(fnm env --use-on-cd)"
 
   # Check if node is installed
   if ! command -v node &> /dev/null; then
