@@ -20,7 +20,9 @@ alias top='btm'
 alias htop='btm'
 
 # dfrs alias (better df)
-alias df='dfrs'
+if [[ "$OSTYPE" != "darwin"* ]]; then
+  alias df='dfrs'
+fi
 
 # zoxide alias (smart cd)
 alias cd='z'
