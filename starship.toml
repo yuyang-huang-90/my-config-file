@@ -1,0 +1,45 @@
+# Starship Configuration
+
+# 2-line prompt: dir + git on line 1, ❯ on line 2
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$fill\
+$status\
+$cmd_duration\
+$jobs\
+$time
+$character"""
+
+# Git branch - green (default is purple)
+[git_branch]
+style = "bold green"
+
+# Git status - p10k style symbols
+[git_status]
+format = '([$all_status$ahead_behind](bold))'
+ahead = "[⇡${count}](green)"
+behind = "[⇣${count}](green) "
+diverged = "[⇣${behind_count}⇡${ahead_count}](green) "
+conflicted = "[~${count}](red) "
+untracked = "[?${count}](blue) "
+stashed = "[*${count}](green) "
+modified = "[!${count}](yellow) "
+staged = "[+${count}](yellow) "
+deleted = "[✘${count}](red) "
+ignore_submodules = true
+
+# Invisible fill (default shows dots)
+[fill]
+symbol = " "
+
+# Show exit code on error (disabled by default)
+[status]
+disabled = false
+
+# Show time (disabled by default)
+[time]
+disabled = false

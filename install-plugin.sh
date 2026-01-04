@@ -60,6 +60,13 @@ install_cargo_component() {
 # install fnm for node management
 install_cargo_component fnm
 
+# starship: A minimal, blazing-fast, prompt for any shell.
+install_cargo_component starship
+
+# alacritty: A fast, cross-platform, GPU-accelerated terminal emulator.
+install_cargo_component alacritty
+
+
 # Configure fnm environment and install Node.js LTS if not present
 if command -v fnm &> /dev/null; then
   # Load fnm environment
