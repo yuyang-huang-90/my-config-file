@@ -38,10 +38,14 @@ fi
 # Plugin management
 # -------------------------------
 
-# Essentials
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
+# Skip heavy plugins on low-power systems
+# Set LOW_POWER_MODE=1 in your shell environment on Raspberry Pi or similar devices
+if [[ -z "$LOW_POWER_MODE" ]]; then
+  # Essentials
+  zinit light zsh-users/zsh-completions
+  zinit light zsh-users/zsh-syntax-highlighting
+  zinit light zsh-users/zsh-autosuggestions
+fi
 zinit light Aloxaf/fzf-tab
 
 # Git plugin
@@ -58,7 +62,6 @@ export FZF_DEFAULT_OPTS="--reverse --height 40% \
   --color info:150,prompt:110,spinner:150,pointer:167,marker:174"
 
 # Zoxide
-zinit light ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
 # -------------------------------
