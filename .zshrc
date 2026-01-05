@@ -31,42 +31,24 @@ fi
 # Only initialize if not already done by system config
 if [[ -z "${_comps}" ]]; then
   autoload -Uz compinit
-  # Use cache and only rebuild once per day for performance
-  if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-    compinit -d "${ZDOTDIR:-$HOME}/.zcompdump"
-  else
-    compinit -C -d "${ZDOTDIR:-$HOME}/.zcompdump"
-  fi
+  compinit
 fi
 
 # -------------------------------
 # Plugin management
 # -------------------------------
 
-# Load completions immediately (needed for other plugins)
+# Essentials
 zinit light zsh-users/zsh-completions
-
-# Load plugins with turbo mode (defer loading for faster startup)
-zinit ice wait lucid
+zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-
-zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
-# Load syntax-highlighting last with turbo mode
-zinit ice wait lucid atinit"zpcompinit; zpcdreplay"
-zinit light zsh-users/zsh-syntax-highlighting
-
-# Git plugin (deferred)
-zinit ice wait lucid
+# Git plugin
 zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
-
-# Extract plugin (deferred)
-zinit ice wait lucid
+# Extract plugin
 zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh
-
-# Tmux plugin (deferred)
-zinit ice wait lucid
+# Tmux plugin
 zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/tmux/tmux.plugin.zsh
 
 # FZF integration (manual, outside oh-my-zsh plugin system)
@@ -75,11 +57,9 @@ export FZF_DEFAULT_OPTS="--reverse --height 40% \
   --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229\
   --color info:150,prompt:110,spinner:150,pointer:167,marker:174"
 
-# Zoxide - use zinit's from"gh-r" for binary and eval for init
-zinit ice wait lucid from"gh-r" as"program"
+# Zoxide
 zinit light ajeetdsouza/zoxide
-zinit ice wait lucid atload'eval "$(zoxide init zsh)"'
-zinit light zdharma-continuum/null
+eval "$(zoxide init zsh)"
 
 # -------------------------------
 # Options
@@ -150,7 +130,5 @@ function git_current_branch() {
   git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
-# fnm - defer initialization for faster startup
-if command -v fnm &> /dev/null; then
-  eval "$(fnm env --use-on-cd --shell zsh)"
-fi
+# fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
