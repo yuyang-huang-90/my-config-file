@@ -1,10 +1,9 @@
 # Starship Configuration
 
-# 2-line prompt: user@host + shell + dir + git on line 1, ❯ on line 2
+# 2-line prompt: user@host + dir + git on line 1, ❯ on line 2
 format = """
 $username\
 $hostname\
-$shell\
 $directory\
 $git_branch\
 $git_commit\
@@ -51,18 +50,10 @@ disabled = false
 [username]
 show_always = true
 format = "[$user]($style)"
-style = "bold cyan"
+style_user = "bold cyan"
 
 # Show hostname only on SSH
 [hostname]
 ssh_only = true
 format = "[@$hostname]($style) "
 style = "bold cyan"
-
-# Show shell indicator
-[shell]
-disabled = false
-format = "[$symbol]($style) "
-bash_indicator = "[bash]"
-zsh_indicator = "[zsh]"
-style = "bold yellow"
