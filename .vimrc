@@ -130,16 +130,6 @@ syntax on
 "====== EXTRA CONFIG========
 set clipboard=unnamedplus
 
-" Enable 24-bit RGB colors
-set termguicolors
-
-colorscheme default
-set t_Co=256
-" cursor under line
-set cursorline
-hi CursorLine term=underline cterm=bold gui=bold
-hi Search ctermfg=black ctermbg=yellow
-
 " Make autoread more reliable by checking for file changes on various events
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
