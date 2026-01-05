@@ -1,26 +1,38 @@
 # eza alias
-alias e='eza'
-alias el='eza -la -g'
-alias ll='eza -la -g'
-alias ea='eza -a'
-alias l='eza'
-alias ls='eza'
+if command -v eza &> /dev/null; then
+    alias e='eza'
+    alias el='eza -la -g'
+    alias ll='eza -la -g'
+    alias ea='eza -a'
+    alias l='eza'
+    alias ls='eza'
+fi
 
 # bat alias (better cat)
-alias cat='bat -pp'
+if command -v bat &> /dev/null; then
+    alias cat='bat -pp'
+fi
 
 # dust alias (better du)
-alias du='dust'
+if command -v dust &> /dev/null; then
+    alias du='dust'
+fi
 
 # procs alias (better ps)
-alias psa='procs'
+if command -v procs &> /dev/null; then
+    alias psa='procs'
+fi
 
 # bottom alias (system monitor)
-alias top='btm'
-alias htop='btm'
+if command -v btm &> /dev/null; then
+    alias top='btm'
+    alias htop='btm'
+fi
 
 # zoxide alias (smart cd)
-alias cd='z'
+if command -v zoxide &> /dev/null; then
+    alias cd='z'
+fi
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -29,13 +41,15 @@ alias egrep='egrep --color=auto'
 # some more alias to avoid making mistake
 alias c='clear'
 
-# nvim alias
-# alias nvim='vim'
-alias nvimf='nvim $(fzf)'
-
 # network tools
-alias trip='sudo ${HOME}/.cargo/bin/trip'
+if [ -x "${HOME}/.cargo/bin/trip" ]; then
+    alias trip='sudo ${HOME}/.cargo/bin/trip'
+fi
 
 #git
-alias gco='git checkout $(git branch | fzf)'
-alias gdi='git icdiff'
+if command -v fzf &> /dev/null; then
+    alias gco='git checkout $(git branch | fzf)'
+fi
+if command -v git-icdiff &> /dev/null; then
+    alias gdi='git icdiff'
+fi
