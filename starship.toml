@@ -47,15 +47,13 @@ disabled = false
 [time]
 disabled = false
 
-# Show username only on SSH
+# Show username only on SSH (default behavior)
 [username]
-ssh_only = true
 format = "[$user]($style)"
 style_user = "bold green"
 
-# Show hostname only on SSH
+# Show hostname only on SSH (default behavior)
 [hostname]
-ssh_only = true
 format = "[@$hostname]($style) "
 style = "bold green"
 
