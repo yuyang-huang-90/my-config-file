@@ -1,9 +1,10 @@
 # Starship Configuration
 
-# 2-line prompt: user@host + dir + git on line 1, ❯ on line 2
+# 2-line prompt: user@host + shell + dir + git on line 1, ❯ on line 2
 format = """
 $username\
 $hostname\
+${env_var.STARSHIP_SHELL}\
 $directory\
 $git_branch\
 $git_commit\
@@ -57,3 +58,8 @@ style_user = "bold green"
 ssh_only = true
 format = "[@$hostname]($style) "
 style = "bold green"
+
+# Show shell name via environment variable
+[env_var.STARSHIP_SHELL]
+format = "[$env_value]($style) "
+style = "bold yellow"
