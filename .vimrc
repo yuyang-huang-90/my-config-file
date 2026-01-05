@@ -60,7 +60,6 @@ set timeout timeoutlen=500 ttimeoutlen=100
 
 " UI enhancements
 set scrolloff=8
-set signcolumn=yes
 
 "adjust filetype recongnization
 au BufRead {*.log,message} set ft=messages
