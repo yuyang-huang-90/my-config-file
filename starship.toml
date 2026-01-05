@@ -47,9 +47,9 @@ disabled = false
 [time]
 disabled = false
 
-# Show username always
+# Show username only on SSH
 [username]
-show_always = true
+ssh_only = true
 format = "[$user]($style)"
 style_user = "bold green"
 
