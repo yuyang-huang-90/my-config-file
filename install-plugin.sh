@@ -66,22 +66,6 @@ install_cargo_component starship
 # alacritty: A fast, cross-platform, GPU-accelerated terminal emulator.
 install_cargo_component alacritty
 
-
-# Configure fnm environment and install Node.js LTS if not present
-if command -v fnm &> /dev/null; then
-  # Load fnm environment
-  eval "$(fnm env --use-on-cd)"
-
-  # Check if node is installed
-  if ! command -v node &> /dev/null; then
-    echo "Installing Node.js LTS via fnm..."
-    eval "$(fnm env --use-on-cd)"
-    fnm install --lts
-  else
-    echo "Node.js is already installed. Skipping."
-  fi
-fi
-
 # bat: A cat(1) clone with syntax highlighting and Git integration. Example: bat <file>
 install_cargo_component bat
 # eza: A modern, feature-rich replacement for 'ls'. Example: eza -la
@@ -106,4 +90,3 @@ install_cargo_component trippy trip
 install_cargo_component tealdeer tldr
 
 echo "full install complete"
-
