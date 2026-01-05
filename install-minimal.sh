@@ -151,7 +151,7 @@ LN_OPT="-sfn"
 
 # Link essential dotfiles (skip GUI-specific configs)
 echo "Linking dotfiles..."
-for file in .zshrc .zprofile .zsh_aliases .gitconfig .tmux.conf; do
+for file in .zshrc .zprofile .zsh_aliases .gitconfig .tmux.conf .vimrc; do
   if [ -e "$base/$file" ]; then
     ln ${LN_OPT} "$base/$file" "${TARGET_DIR}/"
   fi

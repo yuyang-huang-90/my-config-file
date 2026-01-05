@@ -2,9 +2,6 @@
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 "vim mode
 set backspace=2
 "encoding
@@ -32,8 +29,10 @@ set incsearch
 set hlsearch
 " Automatically save before commands like :next and :make
 set autowrite
-" Enable mouse usage (all modes
-"set mouse=a
+" Automatically refresh the contents if file changed
+set autoread
+" Enable mouse usage (all modes)
+set mouse=a
 "noback
 set nobackup
 "number
@@ -50,13 +49,19 @@ set laststatus=2
 "ctags set tag=tags set autochdir
 
 "word warp
+set wrap
 set tw=79
 
 " update time
-set updatetime=2000
+set updatetime=300
 
 "fix the hotkey delay problem
-set timeout timeoutlen=5000 ttimeoutlen=100
+set timeout timeoutlen=500 ttimeoutlen=100
+
+" UI enhancements
+set scrolloff=8
+set signcolumn=yes
+set list
 
 "adjust filetype recongnization
 au BufRead {*.log,message} set ft=messages
@@ -85,64 +90,13 @@ set foldlevel=100 "do not auto fold anythin
 set foldopen=block,hor,tag    " what movements open folds
 set foldopen+=percent,mark
 set foldopen+=quickfix
+
+"====== KEYBINDINGS========
+" Match init.lua keybindings
+nmap Q gq
 nmap <Space> za
-
-" Automatically change the working path to the path of the current file
-"autocmd BufNewFile,BufEnter * silent! lcd %:p:h
-
-"smart tab mapping
-map <D-1> 1gt
-map <D-2> 2gt
-map <D-3> 3gt
-map <D-4> 4gt
-map <D-5> 5gt
-map <D-6> 6gt
-map <D-7> 7gt
-map <D-8> 8gt
-map <D-9> 9gt
-map <D-t> :tabnew<CR>
-map <D-w> :tabclose<CR>
-nmap <C-n> gt
-nmap <C-p> gT
-
-"key binding
-"emacs style key
-imap <C-d> <Del>
-imap <C-e> <Esc>A
-imap <C-a> <Esc>I
-imap <C-f> <Right>
-imap <C-b> <Left>
-"AutoClose
-imap ""> ""<ESC>i
-imap ''> ''<ESC>i
-imap ()> ()<ESC>i
-imap {}> {}<ESC>i
-imap []> []<ESC>i
-imap <>> <><ESC>i
-imap $$> $$<ESC>i
-imap %%> %%<ESC>i<SPACE><SPACE><ESC>i
-imap (<CR> ()><CR><ESC>==O
-imap {<CR> {}><CR><ESC>==O
-imap [<CR> []><CR><ESC>==O
-imap <C-l> <CR><ESC>ko
-"change focus
-imap <F2> <ESC>zzko
-" replace word with paste item
-map <C-j> cw<c-r>0<ESC>b
-"move
 nmap mp :bp<CR>
 nmap mn :bn<CR>
-map  <Leader>f :FZF<CR>
-map  <Leader>l :Lines<CR>
-map  <Leader>b :Buf<CR>
-map  <Leader>a :Ag<CR>
-map  <Leader>r :Rg<CR>
-autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
-cmap NT<CR> NERDTree<CR>
-cmap NTC<CR> NERDTreeClose<CR>
-" tagbar setting and key bind
-cmap TB<CR> TagbarToggle<CR>
-cmap TBC<CR> TagbarClose<CR>
 
 "quick close
 nnoremap <C-k> :close<CR>
@@ -168,110 +122,24 @@ tnoremap <C-c> <Esc>
 
 "======END OF BASIC CONFIG========
 
-
-
-
-"====== END OF EXTRA CONFIG========
-
-"====== VIM EXTERNAL PLUGINS========
-" requried for vundle but no need for vim-plugin
-filetype off
-if isdirectory(expand('~/.vim/plugged'))
-  call plug#begin('~/.vim/plugged')
-
-  Plug 'Lokaltog/vim-easymotion'
-  Plug 'tpope/vim-surround'
-  Plug 'scrooloose/nerdtree'
-  Plug 'tpope/vim-pathogen'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
-  Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-commentary'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'majutsushi/tagbar'
-  Plug 'vim-scripts/L9'
-  Plug 'vim-scripts/ShowTrailingWhitespace'
-  Plug 'vim-scripts/Tabular'
-  Plug 'Yggdroot/indentLine'
-  Plug 'airblade/vim-rooter'
-  Plug 'tpope/vim-fugitive'
-  Plug 'ycm-core/YouCompleteMe'
-  Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-  Plug 'lervag/vimtex'
-  Plug 'google/vim-maktaba'
-  Plug 'google/vim-codefmt'
-  " Also add Glaive, which is used to configure codefmt's maktaba flags. See
-  " `:help :Glaive` for usage.
-  Plug 'google/vim-glaive'
-  Plug 'pangloss/vim-javascript'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'github/copilot.vim'
-
-  call plug#end()
-
-endif
-
-let g:tex_flavor = 'latex'
-let g:tex_flavor = 'latex'
-
-"ycm
-" nmap <C-\>s :YcmCompleter GoToReferences<CR>
-" nmap <C-\>g :YcmCompleter GoToDefinition<CR>
-" nmap <C-\>d :YcmCompleter GoToDeclaration<CR>
-" nmap <C-\>f :YcmCompleter GoToImprecise<CR>
-" nmap <C-\>e :YcmCompleter GoToSymbol
-" nmap <C-\>h :YcmCompleter GoToInclude<CR>
-" nerd tree setting and key bind
-autocmd WinEnter * if exists("t:NERDTreeBufName") && winnr("$") == 1 &&bufwinnr(t:NERDTreeBufName) != -1 | q | endif
-cmap NT<CR> NERDTree<CR>
-cmap NTC<CR> NERDTreeClose<CR>
-nmap mp :bp<CR>
-nmap mn :bn<CR>
-" tagbar setting and key bind
-cmap TB<CR> TagbarToggle<CR>
-cmap TBC<CR> TagbarClose<CR>
-
-"fzf
-map  <Leader>f :FZF<CR>
-map  <Leader>l :Lines<CR>
-map  <Leader>b :Buf<CR>
-map  <Leader>a :Ag<CR>
-map  <Leader>r :Rg<CR>
-
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  "autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-  autocmd FileType rust AutoFormatBuffer rustfmt
-  autocmd FileType vue AutoFormatBuffer prettier
-augroup END
-
 " turn on indentation
 filetype plugin indent on
 "syntax
 syntax on
 
-"====== END OF VIM PLUGIN========
-
 "====== EXTRA CONFIG========
-let VIMCONFIG_DIR = ''
-if VIMCONFIG_DIR == ''
-    let VIMCONFIG_DIR = $HOME."/.vim/conf"
-endif
-
 set clipboard=unnamedplus
 
-" exec ':so ' . VIMCONFIG_DIR . '/fuf.vim'
-exec ':so ' . VIMCONFIG_DIR . '/cscope_maps.vim'
-colorscheme vividchalk
+" Enable 24-bit RGB colors
+set termguicolors
+
+colorscheme default
 set t_Co=256
 " cursor under line
 set cursorline
 hi CursorLine term=underline cterm=bold gui=bold
 hi Search ctermfg=black ctermbg=yellow
+
+" Make autoread more reliable by checking for file changes on various events
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
