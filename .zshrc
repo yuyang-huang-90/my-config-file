@@ -26,6 +26,15 @@ else
 fi
 
 # -------------------------------
+# Completion system
+# -------------------------------
+# Only initialize if not already done by system config
+if [[ -z "${_comps}" ]]; then
+  autoload -Uz compinit
+  compinit
+fi
+
+# -------------------------------
 # Plugin management
 # -------------------------------
 
