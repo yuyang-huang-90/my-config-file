@@ -50,10 +50,10 @@ disabled = false
 [username]
 show_always = true
 format = "[$user]($style)"
-style_user = "bold cyan"
+style_user = "bold green"
 
 # Show hostname only on SSH
 [hostname]
 ssh_only = true
 format = "[@$hostname]($style) "
-style = "bold cyan"
+style = "bold green"
