@@ -80,6 +80,14 @@ else
   echo "bat already installed."
 fi
 
+# eza - modern replacement for ls (available in apt)
+if ! command -v eza &> /dev/null; then
+  echo "Installing eza..."
+  sudo apt install -y eza
+else
+  echo "eza already installed."
+fi
+
 # zoxide - smarter cd command (using official install script for pre-built binary)
 if ! command -v zoxide &> /dev/null; then
   echo "Installing zoxide..."
