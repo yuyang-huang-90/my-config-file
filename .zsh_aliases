@@ -8,6 +8,11 @@ if command -v eza &> /dev/null; then
     alias ls='eza'
 fi
 
+# nvim alias (fallback to vim if nvim not available)
+if ! command -v nvim &> /dev/null; then
+    alias nvim='vim'
+fi
+
 # bat alias (better cat)
 if command -v bat &> /dev/null; then
     alias cat='bat -pp'
