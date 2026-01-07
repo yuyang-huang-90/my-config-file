@@ -52,8 +52,6 @@ zinit light Aloxaf/fzf-tab
 zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
 # Extract plugin
 zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh
-# Tmux plugin
-zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/tmux/tmux.plugin.zsh
 
 # FZF integration (manual, outside oh-my-zsh plugin system)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
