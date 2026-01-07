@@ -46,11 +46,6 @@ alias egrep='egrep --color=auto'
 # some more alias to avoid making mistake
 alias c='clear'
 
-# network tools
-if [ -x "${HOME}/.cargo/bin/trip" ]; then
-    alias trip='sudo ${HOME}/.cargo/bin/trip'
-fi
-
 #git
 if command -v fzf &> /dev/null; then
     alias gco='git checkout $(git branch | fzf)'
