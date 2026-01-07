@@ -90,19 +90,6 @@ function gdsi() {
   git icdiff "$commit~1" "$commit"
 }
 
-function validate_tf() {
-  for dir in $(find . -type d); do
-    if ls $dir/*.tf >/dev/null 2>&1; then
-      echo "Validating $dir"
-      (
-        cd $dir
-        terraform init -backend=false >/dev/null 2>&1
-        terraform validate
-      )
-    fi
-  done
-}
-
 function ai_commit() {
   if [ -z "$1" ]; then
     echo "Usage: $0 <commit_message_text>"
@@ -111,17 +98,6 @@ function ai_commit() {
   clippy ask "Your task is to proofread and update the commit message delimited by triple backticks.
 You must first summarize the message in a single sentence which is less than 60 characters, then followed by the elaborated description. The commit message is publicly visible to make it accurate and concise.
 I need the response in a format I can directly paste to the git commit message.
-\`\`\`
-$1
-\`\`\`"
-}
-
-function ai_japanese() {
-  if [ -z "$1" ]; then
-    echo "Usage: $0 <text_to_translate>"
-    return 1
-  fi
-  clippy ask "Your task is to translate the following message delimited by triple backticks into Japanese. Make it professional but not too formal.
 \`\`\`
 $1
 \`\`\`"
