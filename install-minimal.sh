@@ -160,6 +160,17 @@ done
 echo "Linking directories..."
 ln ${LN_OPT} "$base/zsh-plugin" "${TARGET_DIR}/"
 
+# Setup SSH config
+echo "Setting up SSH configuration..."
+if [ ! -d "${TARGET_DIR}/.ssh" ]; then
+  mkdir -p "${TARGET_DIR}/.ssh"
+  chmod 700 "${TARGET_DIR}/.ssh"
+fi
+if [ -e "$base/.ssh/config" ]; then
+  ln ${LN_OPT} "$base/.ssh/config" "${TARGET_DIR}/.ssh/config"
+  chmod 640 "${TARGET_DIR}/.ssh/config"
+fi
+
 # Setup Neovim config (vim/neovim is useful even on minimal systems)
 echo "Setting up Neovim configuration..."
 if [ ! -d "${TARGET_DIR}/.config/nvim" ]; then
