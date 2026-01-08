@@ -6,15 +6,21 @@
 # Distributed under terms of the MIT license.
 #
 
-if [ $# -ge 2 ]; then
-  echo "Usage: $0 [WORKDIR]"
+if [ $# -ge 3 ]; then
+  echo "Usage: $0 [TARGET_DIR] [SOURCE_DIR]"
   exit 1
 fi
 
 TARGET_DIR=~
-if [ $# -eq 1 ]; then
+if [ $# -ge 1 ]; then
   TARGET_DIR=${1%"/"}
   echo "Target directory is ${TARGET_DIR}"
+fi
+
+SOURCE_DIR="$(pwd)"
+if [ $# -ge 2 ]; then
+  SOURCE_DIR=${2%"/"}
+  echo "Source directory is ${SOURCE_DIR}"
 fi
 
 # Ensure base tools for bootstrapping
@@ -47,7 +53,7 @@ if [ ! -d "${TARGET_DIR}/.config" ]; then
   mkdir -p "${TARGET_DIR}/.config"
 fi
 
-base="$(pwd)"
+base="$SOURCE_DIR"
 LN_OPT="-sfn"
 if [[ "$(uname)" == "Darwin" ]]; then
   LN_OPT="-sfnh"
@@ -62,7 +68,9 @@ for file in .zshrc .zprofile .zsh_aliases .emacs .hgrc .gitconfig .tmux.conf .we
 done
 
 echo "Linking directories..."
-ln ${LN_OPT} "$base/zsh-plugin" "${TARGET_DIR}/"
+if [ -e "$base/zsh-plugin" ]; then
+  ln ${LN_OPT} "$base/zsh-plugin" "${TARGET_DIR}/"
+fi
 
 # Setup SSH config
 echo "Setting up SSH configuration..."
@@ -80,18 +88,24 @@ echo "Setting up Neovim configuration..."
 if [ ! -d "${TARGET_DIR}/.config/nvim" ]; then
   mkdir -p "${TARGET_DIR}/.config/nvim"
 fi
-ln ${LN_OPT} "$base/init.lua" "${TARGET_DIR}/.config/nvim/init.lua"
+if [ -e "$base/init.lua" ]; then
+  ln ${LN_OPT} "$base/init.lua" "${TARGET_DIR}/.config/nvim/init.lua"
+fi
 
 # Setup Alacritty config
 echo "Setting up Alacritty configuration..."
 if [ ! -d "${TARGET_DIR}/.config/alacritty" ]; then
   mkdir -p "${TARGET_DIR}/.config/alacritty"
 fi
-ln ${LN_OPT} "$base/alacritty.toml" "${TARGET_DIR}/.config/alacritty/alacritty.toml"
+if [ -e "$base/alacritty.toml" ]; then
+  ln ${LN_OPT} "$base/alacritty.toml" "${TARGET_DIR}/.config/alacritty/alacritty.toml"
+fi
 
 # Setup Starship config
 echo "Setting up Starship configuration..."
-ln ${LN_OPT} "$base/starship.toml" "${TARGET_DIR}/.config/starship.toml"
+if [ -e "$base/starship.toml" ]; then
+  ln ${LN_OPT} "$base/starship.toml" "${TARGET_DIR}/.config/starship.toml"
+fi
 
 echo "Configuration setup done!"
 echo "Note: Run ./install-plugin.sh to install additional tools and plugins."
