@@ -67,6 +67,20 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
   end,
 })
 
+-- Sets up the Kernel environment
+local function set_kernel_env()
+  vim.opt.colorcolumn = '81'
+  vim.opt.shiftwidth = 8
+  vim.opt.softtabstop = 0
+  vim.opt.textwidth = 80
+  vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#0f0f0f" })
+  print("Kernel environment enabled.")
+end
+
+
+-- Keymap to enable the Kernel environment
+vim.keymap.set('n', '<leader>k', set_kernel_env, { desc = "Enable Kernel Environment" })
+
 -- =============================================================================
 -- || KEYMAPS
 -- =============================================================================
@@ -214,9 +228,17 @@ require("lazy").setup({
       config = function()
         local mason_lspconfig = require("mason-lspconfig")
         mason_lspconfig.setup({
-          ensure_installed = { "pyright", "clangd", 'ts_ls' },
+          ensure_installed = { "pyright", "clangd", 'ts_ls', "jdtls" },
         })
       end,
+    },
+    {
+      'nvim-java/nvim-java',
+      dependencies = {
+        {
+          'neovim/nvim-lspconfig',
+        },
+      },
     },
     {
       "hrsh7th/nvim-cmp",
