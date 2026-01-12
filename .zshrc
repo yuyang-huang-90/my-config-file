@@ -87,7 +87,7 @@ bindkey -e
 
 function gdsi() {
   local commit=${1:-HEAD}
-  git icdiff "$commit~1" "$commit"
+  git icdiff --no-prompt "${commit}~1..${commit}"
 }
 
 function ai_commit() {

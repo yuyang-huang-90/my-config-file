@@ -12,12 +12,19 @@
 	side-by-side = true
 	line-numbers = true
 	syntax-theme = none
+	minus-style = "#e06c75"
+	minus-emph-style = bold "#e06c75" reverse
+	plus-style = "#98c379"
+	plus-emph-style = bold "#98c379" reverse
+	line-numbers-minus-style = "#e06c75"
+	line-numbers-plus-style = "#98c379"
+	line-numbers-zero-style = "#5c6370"
 	file-style = omit
 	file-decoration-style = none
 	hunk-header-style = file line-number
-	hunk-header-file-style = blue bold
-	hunk-header-line-number-style = yellow
-	hunk-header-decoration-style = blue box
+	hunk-header-file-style = "#61afef" bold
+	hunk-header-line-number-style = "#e5c07b" bold
+	hunk-header-decoration-style = "#61afef" box
 [merge]
 	conflictStyle = zdiff3
 [color]
