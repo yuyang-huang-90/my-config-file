@@ -88,5 +88,7 @@ install_cargo_component du-dust dust
 install_cargo_component trippy trip
 # tealdeer: A fast implementation of tldr, providing simplified man pages. Example: tldr tar
 install_cargo_component tealdeer tldr
+# git-delta: A syntax-highlighting pager for git and diff output
+install_cargo_component git-delta
 
 echo "full install complete"
