@@ -41,6 +41,7 @@ sudo apt install -y \
   unzip \
   wget \
   tree \
+  git-delta \
   jq
 
 # Install modern CLI tools that have apt packages or pre-built binaries
