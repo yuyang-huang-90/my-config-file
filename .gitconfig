@@ -24,8 +24,6 @@
 	line-numbers-plus-style = "#28a745"
 	line-numbers-zero-style = "#6a737d"
 	zero-style = syntax
-	file-style = omit
-	file-decoration-style = none
 	hunk-header-style = file line-number syntax
 	hunk-header-file-style = "#c678dd"
 	hunk-header-line-number-style = "#e5c07b"
