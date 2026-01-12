@@ -11,20 +11,25 @@
 	dark = true
 	side-by-side = true
 	line-numbers = true
+	line-numbers-left-format = "{nm:>4} "
+	line-numbers-right-format = "{np:>4} "
 	syntax-theme = none
-	minus-style = "#e06c75"
-	minus-emph-style = bold "#e06c75" reverse
-	plus-style = "#98c379"
-	plus-emph-style = bold "#98c379" reverse
-	line-numbers-minus-style = "#e06c75"
-	line-numbers-plus-style = "#98c379"
-	line-numbers-zero-style = "#5c6370"
+	minus-style = syntax "#7a1a1a"
+	minus-non-emph-style = syntax "#2a0505"
+	minus-emph-style = syntax "#7a1a1a"
+	plus-style = syntax "#1a4d1a"
+	plus-non-emph-style = syntax "#052005"
+	plus-emph-style = syntax "#1a4d1a"
+	line-numbers-minus-style = "#d73a49"
+	line-numbers-plus-style = "#28a745"
+	line-numbers-zero-style = "#6a737d"
+	zero-style = syntax
 	file-style = omit
 	file-decoration-style = none
-	hunk-header-style = file line-number
-	hunk-header-file-style = "#61afef" bold
-	hunk-header-line-number-style = "#e5c07b" bold
-	hunk-header-decoration-style = "#61afef" box
+	hunk-header-style = file line-number syntax
+	hunk-header-file-style = "#c678dd"
+	hunk-header-line-number-style = "#e5c07b"
+	hunk-header-decoration-style = "#6a737d" box
 [merge]
 	conflictStyle = zdiff3
 [color]
