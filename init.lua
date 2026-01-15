@@ -53,7 +53,8 @@ vim.opt.list = true -- enable list mode
 vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
   pattern = '*',
   callback = function()
-    if vim.fn.mode() ~= 'c' then
+    -- Don't run checktime in command-line mode or command-line window
+    if vim.fn.mode() ~= 'c' and vim.fn.getcmdwintype() == '' then
       vim.cmd('checktime')
     end
   end,
@@ -138,6 +139,25 @@ require("lazy").setup({
     { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
     { 'echasnovski/mini.trailspace', version = '*', opts = {} },
     { "nmac427/guess-indent.nvim", opts = {} },
+    -- treesitter
+    {
+      'nvim-treesitter/nvim-treesitter',
+      branch = 'master',
+      lazy = false,
+      build = ':TSUpdate',
+      config = function()
+        require('nvim-treesitter.configs').setup({
+          ensure_installed = { "lua", "vim", "vimdoc", "python", "c", "cpp", "java", "javascript", "typescript", "bash" },
+          auto_install = true,
+          highlight = {
+            enable = true,
+          },
+          indent = {
+            enable = true,
+          },
+        })
+      end,
+    },
     -- telescope
     {
       'nvim-telescope/telescope.nvim',
