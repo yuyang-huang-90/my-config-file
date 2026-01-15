@@ -34,7 +34,7 @@ vim.opt.foldenable = true
 vim.opt.foldlevel = 100            -- don't auto-fold anything
 vim.opt.foldopen = 'block,hor,tag,percent,mark,quickfix' -- what movements open folds
 vim.opt.wrap = true                -- enable word wrap
-vim.opt.textwidth = 79             -- wrap lines at 79 characters
+vim.opt.textwidth = 79             -- wrap lines at 79 characters (default)
 vim.opt.cursorline = true          -- highlight the current line
 vim.opt.termguicolors = true       -- enable 24-bit RGB colors
 vim.opt.signcolumn = 'yes'
@@ -68,12 +68,29 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
   end,
 })
 
+-- Set textwidth to 100 for source code files
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'c', 'cpp', 'h', 'hpp',            -- C/C++
+    'java', 'kotlin', 'scala',         -- JVM languages
+    'python', 'py',                    -- Python
+    'rust', 'rs',                      -- Rust
+    'go',                              -- Go
+    'javascript', 'typescript',        -- JavaScript/TypeScript
+    'js', 'jsx', 'ts', 'tsx',          -- JS/TS variants
+  },
+  callback = function()
+    vim.opt_local.textwidth = 100
+  end,
+})
+
 -- Sets up the Kernel environment
 local function set_kernel_env()
-  vim.opt.colorcolumn = '81'
-  vim.opt.shiftwidth = 8
-  vim.opt.softtabstop = 0
-  vim.opt.textwidth = 80
+  vim.opt_local.colorcolumn = '81'
+  vim.opt_local.shiftwidth = 8
+  vim.opt_local.softtabstop = 0
+  vim.opt_local.textwidth = 80
+  vim.opt_local.expandtab = false
   vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#0f0f0f" })
   print("Kernel environment enabled.")
 end
