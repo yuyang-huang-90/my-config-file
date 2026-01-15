@@ -1,3 +1,8 @@
+-- Set git config for lazy.nvim to work properly
+vim.env.GIT_CONFIG_COUNT = '1'
+vim.env.GIT_CONFIG_KEY_0 = 'init.defaultRefFormat'
+vim.env.GIT_CONFIG_VALUE_0 = 'files'
+
 -- BASIC CONFIG
 --
 vim.opt.backspace = 'indent,eol,start' -- allow backspacing over everything in insert mode
