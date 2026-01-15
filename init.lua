@@ -303,17 +303,11 @@ require("lazy").setup({
       },
       init = function()
         -- Use conform for gq formatting (only for Java)
+        -- All other languages use vim's default formatting
         vim.api.nvim_create_autocmd('FileType', {
           pattern = { 'java' },
           callback = function()
             vim.bo.formatexpr = "v:lua.require'conform'.formatexpr()"
-          end,
-        })
-        -- For Kotlin, use vim's built-in indentation (no external formatter)
-        vim.api.nvim_create_autocmd('FileType', {
-          pattern = { 'kotlin' },
-          callback = function()
-            vim.bo.formatexpr = ""  -- Use default vim formatting
           end,
         })
       end,
