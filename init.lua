@@ -269,6 +269,50 @@ require("lazy").setup({
         })
       end,
     },
+    -- Auto-install formatters via Mason
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      dependencies = { "mason-org/mason.nvim" },
+      opts = {
+        ensure_installed = {
+          "google-java-format",
+        },
+      },
+    },
+    -- Formatter plugin
+    {
+      "stevearc/conform.nvim",
+      event = { "BufWritePre" },
+      cmd = { "ConformInfo" },
+      opts = {
+        formatters_by_ft = {
+          java = { "google-java-format" },
+        },
+        format_on_save = false,
+        -- Configure google-java-format to use AOSP style (4-space indent)
+        formatters = {
+          ["google-java-format"] = {
+            prepend_args = { "--aosp" },
+          },
+        },
+      },
+      init = function()
+        -- Use conform for gq formatting (only for Java)
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = { 'java' },
+          callback = function()
+            vim.bo.formatexpr = "v:lua.require'conform'.formatexpr()"
+          end,
+        })
+        -- For Kotlin, use vim's built-in indentation (no external formatter)
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = { 'kotlin' },
+          callback = function()
+            vim.bo.formatexpr = ""  -- Use default vim formatting
+          end,
+        })
+      end,
+    },
     {
       'nvim-java/nvim-java',
       dependencies = {
