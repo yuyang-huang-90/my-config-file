@@ -90,7 +90,7 @@ function gdsi() {
   git icdiff --no-prompt "${commit}~1..${commit}"
 }
 
-function ai_commit() {
+function ai-commit() {
   if [ -z "$1" ]; then
     echo "Usage: $0 <commit_message_text>"
     return
