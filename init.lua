@@ -40,10 +40,14 @@ vim.opt.foldlevel = 100            -- don't auto-fold anything
 vim.opt.foldopen = 'block,hor,tag,percent,mark,quickfix' -- what movements open folds
 vim.opt.wrap = true                -- enable word wrap
 vim.opt.textwidth = 79             -- wrap lines at 79 characters (default)
+vim.opt.colorcolumn = '+1'         -- show vertical line at textwidth + 1
 vim.opt.cursorline = true          -- highlight the current line
 vim.opt.termguicolors = true       -- enable 24-bit RGB colors
 vim.opt.signcolumn = 'yes'
 vim.opt.scrolloff = 8
+
+-- Set ColorColumn highlight color globally
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#0f0f0f" })
 
 -- BEHAVIOR
 vim.opt.autowrite = true   -- automatically save before commands like :next
@@ -91,12 +95,10 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Sets up the Kernel environment
 local function set_kernel_env()
-  vim.opt_local.colorcolumn = '81'
   vim.opt_local.shiftwidth = 8
   vim.opt_local.softtabstop = 0
   vim.opt_local.textwidth = 80
   vim.opt_local.expandtab = false
-  vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#0f0f0f" })
   print("Kernel environment enabled.")
 end
 
