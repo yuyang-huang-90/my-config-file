@@ -123,6 +123,10 @@ map('n', 'mn', ':bn<CR>', { desc = 'Next Buffer', silent = true })
 map({ 'n', 'i', 'v', 's', 'x', 'c', 'o', 'l', 't' }, '<C-k>', '<cmd>close<CR>', { desc = 'Quick Close Window' })
 map({ 'n', 'i', 'v', 's', 'x', 'c', 'o', 'l', 't' }, '<C-c>', '<Esc>', { desc = 'Quick Escape' })
 
+-- Terminal mode navigation
+-- Use Alt+e to escape terminal mode and switch to editor window
+map('t', '<M-e>', '<C-\\><C-n><C-w>p', { desc = 'Focus Editor from Terminal' })
+
 
 -- =============================================================================
 -- || PLUGINS (using lazy.nvim)
@@ -376,6 +380,38 @@ require("lazy").setup({
         vim.g.copilot_no_tab_map = true
         map('i', '<C-l>', 'copilot#Accept("<CR>")', { expr = true, replace_keycodes = false, desc = "Accept Copilot" })
       end,
+    },
+    -- gitsigns for git change markers
+    {
+      'lewis6991/gitsigns.nvim',
+      opts = {
+        signs = {
+          add          = { text = '+' },
+          change       = { text = '~' },
+          delete       = { text = '_' },
+          topdelete    = { text = '‾' },
+          changedelete = { text = '~' },
+        },
+      },
+    },
+    -- claudecode.nvim
+    {
+      "coder/claudecode.nvim",
+      dependencies = { "folke/snacks.nvim" },
+      config = true,
+      keys = {
+        -- Main actions
+        { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+        { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+
+        -- Buffer/selection operations
+        { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+        { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send selection" },
+
+        -- Diff management
+        { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+        { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+      },
     },
   },
   -- Configure any other settings here. See the documentation for more details.
