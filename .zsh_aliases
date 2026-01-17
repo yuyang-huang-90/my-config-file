@@ -30,8 +30,8 @@ fi
 
 # bottom alias (system monitor)
 if command -v btm &> /dev/null; then
-    alias top='btm'
-    alias htop='btm'
+    alias top='btm -b'
+    alias htop='btm -b'
 fi
 
 # zoxide alias (smart cd)
